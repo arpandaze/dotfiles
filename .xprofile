@@ -1,0 +1,4 @@
+# Keyboard Layout
+xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 -r 60.00 --rotate normal --output DP-0 --primary --mode 1920x1080 --pos 0x0 -r 144.00 --rotate normal
+setxkbmap us &
+setxkbmap -option caps:escape

@@ -1,0 +1,20 @@
+if [[ $1 == "stop" || $1 == "q" ]]; then
+    echo "Stopping container!"
+    command docker stop global_mailhog
+    exit
+fi
+
+if [ "$(docker ps -q -f name=global_mailhog)" ]; then
+    echo "Already running!"
+    exit
+fi
+
+if [ "$(docker ps -aq -f name=global_mailhog)" ]; then
+    echo "Launching existing container!"
+    docker start global_mailhog
+    exit
+fi
+
+echo "Creating new container!"
+
+docker run --name global_mailhog -d -p 8025:8025 -p 1025:1025 mailhog/mailhog

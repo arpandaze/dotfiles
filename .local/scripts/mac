@@ -1,0 +1,11 @@
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+echo -n "Enter Password:"
+read -s password
+
+echo "//mac/Documents /home/daze/MacDocuments/ cifs username=daze,password=$password,guest,uid=daze,iocharset=utf8,file_mode=0666,dir_mode=0666,noperm 0 0" >> /etc/fstab
+mount -a
+sed -i '$d' /etc/fstab

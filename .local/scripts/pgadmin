@@ -1,0 +1,24 @@
+if [[ $1 == "stop" || $1 == "q" ]]; then
+    echo "Stopping container!"
+    command docker stop global_pgadmin
+    exit
+fi
+
+if [ "$(docker ps -q -f name=global_pgadmin)" ]; then
+    echo "Already running!"
+    exit
+fi
+
+if [ "$(docker ps -aq -f name=global_pgadmin)" ]; then
+    echo "Launching existing container!"
+    docker start global_pgadmin
+    exit
+fi
+
+echo "Creating new container!"
+
+docker run --name global_pgadmin --network="host" \
+    -e 'PGADMIN_DEFAULT_EMAIL=test@test.com' \
+    -e 'PGADMIN_DEFAULT_PASSWORD=test' \
+    -e 'PGADMIN_LISTEN_PORT=5050' \
+    -d dpage/pgadmin4
