@@ -17,4 +17,4 @@ fi
 
 echo "Creating new container!"
 
-docker run --name global_mailhog -d -p 8025:8025 -p 1025:1025 mailhog/mailhog
+docker run --name global_mailhog --network="host" -d mailhog/mailhog

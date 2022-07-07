@@ -1,0 +1,9 @@
+#!/bin/bash
+
+X_POS="$(xdotool getmouselocation --shell | head -n 1 | cut -c3-)"
+
+ACTIVE_MONITOR="$(expr $X_POS / 1920)"
+
+PID="$(ps -eaf | rg "polybar -c /home/daze/.config/leftwm/themes/daze/polybar.config mainbar$ACTIVE_MONITOR" | rg tty | rg -v rg | tr -s " " | cut -d " " -f 2)"
+
+polybar-msg -p $PID cmd toggle

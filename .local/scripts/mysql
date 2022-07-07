@@ -1,0 +1,22 @@
+if [[ $1 == "stop" || $1 == "q" ]]; then
+    echo "Stopping container!"
+    command docker stop global_mysql
+    exit
+fi
+
+if [ "$(docker ps -q -f name=global_mysql)" ]; then
+    echo "Already running!"
+    exit
+fi
+
+if [ "$(docker ps -aq -f name=global_mysql)" ]; then
+    echo "Launching existing container!"
+    docker start global_mysql
+    exit
+fi
+
+echo "Creating new container!"
+
+docker run --name global_mysql --network="host" \
+    -e 'MYSQL_ROOT_PASSWORD=password' \
+    -d mysql:latest
