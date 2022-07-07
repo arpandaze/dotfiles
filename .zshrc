@@ -10,11 +10,10 @@ if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
 
-eval "$(direnv hook zsh)"
-
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/scripts:$PATH"
+export PATH="/opt/android-sdk/cmdline-tools/latest/bin:$PATH"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -148,23 +147,26 @@ alias gch="git checkout"
 alias ls="exa"
 alias la="exa -la"
 alias mac="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 daze@mac:/Users/daze/Documents/Projects ~/MacDocuments"
-alias umac="umount ~/MacDocuments"
+# alias sync='osync.sh --initiator="/home/daze/Documents/Projects" --target="ssh://daze@mac:22//Users/daze/Documents/Projects"'
+alias sync='osync.sh ~/.config/osync/sync.conf'
+alias andsync='osync.sh --initiator="/home/daze/Documents/Projects" --target="ssh://and:2222/~/SDCard/Projects"'
+alias umac="umount -l ~/MacDocuments"
 alias yay="paru --color always"
 alias du="du -h"
 alias tmux="TERM=screen-256color-bce tmux"
+alias rm="trash"
+alias space="dust -d 2"
 
 alias tma="tmux attach -t"
 
 tmc(){
-    tmux has-session -t $1 
+    tmux has-session -t $1 > /dev/null 2>&1 
     if [ $? ]
     then
-      command tmux new-session -d -s $1
+      command tmux new-session -d -s $1 > /dev/null 2>&1
     fi
-
-    tmux switch -t $1
+    tma $1
 }
-
 
 v(){
   if [[ $1 == "" ]]; then
@@ -187,9 +189,6 @@ hey(){
     if [[ $1 == "update" ]]; then
         command sudo pacman -Syu
         command yay -Syu
-        command flatpak update
-        command xmonad --recompile
-        pushconf
     fi
     if [[ $1 == "list" ]]; then
         command pacman -Qe
@@ -231,7 +230,7 @@ conf(){
     if [[ $1 == "bash" ]]; then
         command nvim ~/.bashrc
     fi
-    if [[ $1 == "alacritty" || $1 == "term" ]]; then
+    if [[ $1 == "alacritty" || $1 == "ala" ]]; then
         command nvim ~/.config/alacritty/alacritty.yml
     fi
     if [[ $1 == "vim" || $1 == "vi" || $1 == "nvim" ]]; then
@@ -245,13 +244,20 @@ conf(){
         command nvim ~/.config/vifm/vifmrc
     fi
     if [[ $1 == "x" || $1 == "xinit" ]]; then
-        command nvim ~/.xprofile
+        command nvim ~/.xinitrc
     fi
     if [[ $1 == "r" || $1 == "rofi" ]]; then
         command nvim ~/.config/rofi
     fi
     if [[ $1 == "p" || $1 == "picom" ]]; then
         command nvim ~/.config/picom.conf
+    fi
+    if [[ $1 == "leftwm" || $1 == "wm" ]]; then
+        command nvim ~/.config/leftwm/config.toml
+    fi
+    if [[ $1 == "wmtheme" || $1 == "theme" ]]; then
+        pwd=$(pwd)
+        cd ~/.config/leftwm && nvim ~/.config/leftwm/themes.toml && cd $pwd
     fi
 }
 
@@ -276,8 +282,6 @@ export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export PATH="$HOME/.poetry/bin:$PATH"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
