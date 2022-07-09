@@ -12,6 +12,7 @@ M.mappings = {
    disabled = {
       n = {
          ["<leader>e"] = "",
+         ["<leader>rn"] = "",
       },
    },
    nvimtree = { n = { ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" } } },
