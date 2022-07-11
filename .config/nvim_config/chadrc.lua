@@ -49,6 +49,7 @@ M.plugins = {
     ["sbdchd/neoformat"] = {},
     ["tpope/vim-surround"] = {},
     ["tpope/vim-fugitive"] = {},
+    ["lervag/vimtex"] = {},
     ["goolord/alpha-nvim"] = {
       disable = false,
     },
