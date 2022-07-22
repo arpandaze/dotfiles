@@ -8,6 +8,10 @@ disable_current_tag_swap = false
 focus_behaviour = "Sloppy"
 focus_new_windows = true
 
+window_rules = [
+  {window_title = "OpenGL-Practice", spawn_on_tag = 3, spawn_floating = true},
+]
+
 [[keybind]]
 command = "Execute"
 value = "exec /home/daze/.config/rofi/launchers/misc/launcher.sh"

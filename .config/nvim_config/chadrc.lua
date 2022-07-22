@@ -18,6 +18,10 @@ M.mappings = {
     n = {
       ["<leader>e"] = "",
       ["<leader>rn"] = "",
+      ["<S-s>"] = "",
+    },
+    v = {
+      ["<S-s>"] = "",
     },
   },
   nvimtree = { n = { ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" } } },
@@ -47,7 +51,11 @@ M.mappings = {
 M.plugins = {
   user = {
     ["sbdchd/neoformat"] = {},
-    ["kylechui/nvim-surround"] = {},
+    ["kylechui/nvim-surround"] = {
+      config = function()
+        require("nvim-surround").setup {}
+      end,
+    },
     ["tpope/vim-fugitive"] = {},
     ["lervag/vimtex"] = {},
     ["goolord/alpha-nvim"] = {
