@@ -4,11 +4,6 @@ local M = {}
 
 M.ui = {
   theme = "onedark",
-  statusline = {
-    separator_style = "block", -- default/round/block/arrow
-    config = "%!v:lua.require('ui.statusline').run()",
-    override = {},
-  },
 }
 
 -- custom.mappings
@@ -49,6 +44,13 @@ M.mappings = {
 
 -- Custom Plugins
 M.plugins = {
+  override = {
+    ["NvChad/ui"] = {
+      statusline = {
+        separator_style = "block",
+      },
+    },
+  },
   user = {
     ["sbdchd/neoformat"] = {},
     ["kylechui/nvim-surround"] = {
@@ -58,14 +60,19 @@ M.plugins = {
     },
     ["tpope/vim-fugitive"] = {},
     ["lervag/vimtex"] = {},
+    ["akinsho/flutter-tools.nvim"] = {
+      config = function()
+        require("nvim-surround").setup {}
+      end,
+    },
     ["goolord/alpha-nvim"] = {
       disable = false,
     },
-  },
-
-  options = {
-    lspconfig = {
-      setup_lspconf = "custom.plugins.lspconfig",
+    ["neovim/nvim-lspconfig"] = {
+      config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.plugins.lspconfig"
+      end,
     },
   },
 }
