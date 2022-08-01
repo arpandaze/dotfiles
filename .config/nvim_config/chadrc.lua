@@ -12,6 +12,7 @@ M.mappings = {
   disabled = {
     n = {
       ["<leader>e"] = "",
+      ["<leader>n"] = "",
       ["<leader>rn"] = "",
       ["<S-s>"] = "",
     },
@@ -50,9 +51,22 @@ M.plugins = {
         separator_style = "block",
       },
     },
+    ["nvim-telescope/telescope.nvim"] = {
+      options = {
+        extensions_list = { "themes", "terms", "harpoon" },
+      },
+    },
   },
   user = {
     ["sbdchd/neoformat"] = {},
+    ["ThePrimeagen/harpoon"] = {
+      config = function()
+        require("harpoon").setup {
+          save_on_change = true,
+        }
+        -- require("telescope").load_extension "harpoon"
+      end,
+    },
     ["kylechui/nvim-surround"] = {
       config = function()
         require("nvim-surround").setup {}
