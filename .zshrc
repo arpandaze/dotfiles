@@ -215,7 +215,7 @@ conf(){
     if [[ $1 == "zsh" || $1 == "z" ]]; then
         command nvim ~/.zshrc && source ~/.zshrc
     fi
-    if [[ $1 == "tmux" || $1 == "z" ]]; then
+    if [[ $1 == "tmux" || $1 == "mux" ]]; then
         command nvim ~/.tmux.conf
     fi
     if [[ $1 == "bash" ]]; then
