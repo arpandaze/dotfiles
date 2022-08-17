@@ -27,9 +27,6 @@ if [ -x "$(command -v feh)" ]; then
   feh --bg-scale $SCRIPTPATH/background.jpg
 fi
 
-
-setxkbmap -option caps:escape &> /dev/null &
-
 lxqt-policykit-agent &> /dev/null &
 
 index=0

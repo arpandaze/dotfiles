@@ -1,5 +1,5 @@
-modkey = "Mod1"
-mousekey = "Mod1"
+modkey = "Mod4"
+mousekey = "Mod4"
 workspaces = []
 tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "CenterMain", "CenterMainBalanced", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
@@ -67,7 +67,7 @@ key = "x"
 command = "Execute"
 value = "systemctl suspend"
 modifier = ["modkey", "Control"]
-key = "Delete"
+key = "BackSpace"
 
 [[keybind]]
 command = "Execute"

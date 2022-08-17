@@ -32,12 +32,12 @@ xset fp+ /usr/X11R6/lib/X11/fonts/TTF/
 xset b 100 0 0
 xset r rate 400 35
 
-xmodmap -e "keycode 233 = Page_Down"
-xmodmap -e "keycode 234 = Page_Up"
-xmodmap -e "remove Lock = Caps_Lock"
-xmodmap -e "keysym Caps_Lock = Control_L"
-xmodmap -e "add Control = Control_L"
+# xmodmap -e "add Control = Control_L"
 setxkbmap -option caps:escape
+setxkbmap -option altwin:swap_lalt_lwin
+xmodmap -e "keycode 9 = asciitilde grave"
+xmodmap -e "keycode 64 = keycode 133"
+xmodmap -e "keycode 133 = keycode 64"
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
