@@ -159,15 +159,6 @@ alias space="dust -d 2"
 
 alias tma="tmux attach -t"
 
-tmc(){
-    tmux has-session -t $1 > /dev/null 2>&1 
-    if [ $? ]
-    then
-      command tmux new-session -d -s $1 > /dev/null 2>&1
-    fi
-    tma $1
-}
-
 v(){
   if [[ $1 == "" ]]; then
     command nvim
