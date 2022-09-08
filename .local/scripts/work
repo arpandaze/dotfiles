@@ -15,7 +15,7 @@ selected_name=$(basename "$selected" | tr . _)
 tmux has-session -t $selected_name > /dev/null 2>&1 
 if [ $? ]
 then
-  command tmux new-session -d -s $selected_name > /dev/null 2>&1
+  command tmux new-session -d -s $selected_name -c $selected > /dev/null 2>&1
 fi
 
 tmux attach -t $selected_name
