@@ -1,0 +1,6 @@
+{
+  "Debug Console Print": {
+    "prefix": "dpr",
+    "body": ["console.log($1);"]
+  }
+}
