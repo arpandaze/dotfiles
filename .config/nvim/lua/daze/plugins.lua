@@ -46,7 +46,9 @@ return packer.startup(function(use)
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup({
+				enable_check_bracket_line = false,
+			})
 		end,
 	})
 
@@ -71,6 +73,9 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.x",
+		config = function()
+			require("daze.config.telescope")
+		end,
 	})
 
 	-- Harpoon for nagivation
