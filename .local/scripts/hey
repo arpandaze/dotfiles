@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "install" ]]; then
+    command sudo pacman -S ${@:2}
+fi
+if [[ $1 == "remove" ]]; then
+    command sudo pacman -Rns ${@:2}
+fi
+if [[ $1 == "uninstall" ]]; then
+    command sudo pacman -Rns ${@:2}
+fi
+if [[ $1 == "update" ]]; then
+    command sudo pacman -Syu
+    command yay -Syu
+fi
+if [[ $1 == "list" ]]; then
+    command pacman -Qe
+fi

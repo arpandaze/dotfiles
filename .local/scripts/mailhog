@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [[ $1 == "stop" || $1 == "q" ]]; then
     echo "Stopping container!"
     command docker stop global_mailhog

@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+
 xclip -o -sel clip | tr -d '\n' | sed 's/\\//g' | uncurl | xclip -sel clip

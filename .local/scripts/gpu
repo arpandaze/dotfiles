@@ -1,3 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
 gpuusg="$(nvidia-smi -q -d UTILIZATION | grep Gpu | awk '{print $3}')"
 echo -e "$gpuusg%" 
