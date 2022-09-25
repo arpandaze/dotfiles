@@ -37,3 +37,6 @@ alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 alias rm="trash"
 alias space="dust -d 2"
 alias tma="tmux attach -t"
+
+# Paths
+set -U fish_user_paths ~/.local/scripts $fish_user_paths
