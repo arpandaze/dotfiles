@@ -39,4 +39,4 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 
 # Paths
-set -U fish_user_paths ~/.local/scripts $fish_user_paths
+set -U fish_user_paths ~/.local/scripts /opt/homebrew/bin ~/.cargo/bin $fish_user_paths
