@@ -38,6 +38,9 @@ fi
 if [[ $1 == "leftwm" || $1 == "wm" ]]; then
     command nvim ~/.config/leftwm/config.toml
 fi
+if [[ $1 == "shkd" || $1 == "binds" || $1 == "sxhkd" || $1 == "skhd" ]]; then
+    command nvim ~/.config/skhd/skhdrc
+fi
 if [[ $1 == "wmtheme" || $1 == "theme" ]]; then
     pwd=$(pwd)
     cd ~/.config/leftwm && nvim ~/.config/leftwm/themes.toml && cd $pwd
