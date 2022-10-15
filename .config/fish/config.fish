@@ -39,4 +39,7 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 
 # Paths
-set -U fish_user_paths ~/.local/scripts /opt/homebrew/bin ~/.cargo/bin $fish_user_paths
+set -gx fish_user_paths ~/.local/scripts ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
+
+# Disable ENV prompt since it is already shown on the right side
+set VIRTUAL_ENV_DISABLE_PROMPT 1
