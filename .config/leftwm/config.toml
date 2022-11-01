@@ -325,7 +325,7 @@ key = "t"
 
 [[scratchpad]]
 name = "Routine"
-value = "feh ~/.config/routine/routine.png --zoom 84 max"
+value = "feh ~/.config/spadimages/routine.png --zoom 84 max"
 x = 260
 y = 140
 height = 800
@@ -336,6 +336,20 @@ command = "ToggleScratchPad"
 value = "Routine" # Name set for the scratchpad
 modifier = ["modkey"]
 key = "s"
+
+[[scratchpad]]
+name = "Colemak"
+value = "feh ~/.config/spadimages/colemak.png"
+x = 260
+y = 140
+height = 465
+width = 1400
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "Colemak" # Name set for the scratchpad
+modifier = ["modkey"]
+key = "m"
 
 [[scratchpad]]
 name = "Discord"
