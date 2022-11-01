@@ -1,10 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash -e
 
 if [[ $1 == "install" ]]; then
     command sudo pacman -S ${@:2}
 fi
 if [[ $1 == "remove" ]]; then
-    command sudo pacman -Rns ${@:2}
+    appname=${@:2}
+
+    if [ -z "$2" ]; then
+      appname=$(pacman -Q | fzf | awk '{print $1;}')
+    fi
+
+    command sudo pacman -Rns $appname
 fi
 if [[ $1 == "uninstall" ]]; then
     command sudo pacman -Rns ${@:2}
