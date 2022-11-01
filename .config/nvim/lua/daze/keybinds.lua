@@ -46,8 +46,10 @@ remap("n", "K", "<CMD> lua vim.lsp.buf.hover()<CR>", opts)
 remap("n", "gi", "<CMD> lua vim.lsp.buf.implementation()<CR>", opts)
 remap("n", "<C-k>", "<CMD> lua vim.lsp.buf.signature_help()<CR>", opts)
 
--- Harpoon Binds
+-- Select all
 remap("n", "<leader>a", "ggVG", { noremap = true, silent = true })
+
+-- Harpoon Binds
 remap("n", "<leader>n", ":lua require('harpoon.ui').nav_next()<CR>", opts)
 remap("n", "<leader>N", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
 remap("n", "<leader><leader>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
@@ -55,3 +57,6 @@ remap("n", "ma", ":lua require('harpoon.mark').add_file()<CR>", opts)
 remap("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
 remap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
 remap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+
+-- Leap search visible space
+remap("n", "<leader>g", "<CMD> lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>", opts)

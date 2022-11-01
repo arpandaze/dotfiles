@@ -108,7 +108,7 @@ return packer.startup(function(use)
 					end,
 				}),
 				-- Reference: https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-				ensure_installed = { "sumneko_lua", "rust_analyzer", "pyright", "clang", "tsserver" },
+				ensure_installed = { "sumneko_lua", "rust_analyzer", "pyright", "tsserver" },
 			})
 			vim.diagnostic.config({
 				virtual_text = false,
@@ -205,6 +205,43 @@ return packer.startup(function(use)
 		tag = "*",
 		config = function()
 			require("nvim-surround").setup()
+		end,
+	})
+
+	-- Smooth Scroll
+	use({
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup()
+		end,
+	})
+
+	-- Motion
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").add_default_mappings()
+
+			-- Disable x and X leap motion
+			vim.keymap.del({ "x", "o" }, "x")
+			vim.keymap.del({ "x", "o" }, "X")
+		end,
+	})
+
+	-- Repeat
+	use({
+		"tpope/vim-repeat",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	})
+
+	-- Latex Plugin
+	use({
+		"lervag/vimtex",
+		config = function()
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_syntax_enabled = 0
 		end,
 	})
 
