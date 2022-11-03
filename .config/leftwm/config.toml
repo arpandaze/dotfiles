@@ -291,6 +291,12 @@ key = "space"
 
 [[keybind]]
 command = "Execute"
+value = "/home/daze/.local/scripts/toggle_layout"
+modifier = ["modkey", "Shift"]
+key = "x"
+
+[[keybind]]
+command = "Execute"
 value = "maim -s --hidecursor | xclip -selection clipboard -t image/png"
 modifier = []
 key = "Print"
