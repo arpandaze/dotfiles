@@ -16,6 +16,10 @@ function fish_user_key_bindings
   fish_vi_key_bindings
 end
 
+# Paths
+set -gx fish_user_paths ~/.local/scripts ~/.local/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
+set -gx SUDO_EDITOR nvim
+
 # Alias
 alias py="python3"
 alias vim="nvim"
@@ -39,8 +43,6 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 alias python="python3"
 
-# Paths
-set -gx fish_user_paths ~/.local/scripts ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
 
 # Disable ENV prompt since it is already shown on the right side
 set VIRTUAL_ENV_DISABLE_PROMPT 1
