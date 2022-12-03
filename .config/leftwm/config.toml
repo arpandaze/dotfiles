@@ -43,7 +43,7 @@ key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "brave"
+value = "firefox-developer-edition"
 modifier = ["modkey"]
 key = "b"
 
