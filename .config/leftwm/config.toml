@@ -316,6 +316,20 @@ modifier = ["modkey"]
 key = "Return"
 
 [[scratchpad]]
+name = "Obsidian"
+value = "obsidian"
+x = 260
+y = 140
+height = 800
+width = 1400
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "Obsidian" # Name set for the scratchpad
+modifier = ["modkey"]
+key = "n"
+
+[[scratchpad]]
 name = "Telegram"
 value = "telegram-desktop"
 x = 260
