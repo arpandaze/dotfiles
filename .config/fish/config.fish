@@ -46,5 +46,5 @@ alias python="python3"
 
 # Disable ENV prompt since it is already shown on the right side
 set VIRTUAL_ENV_DISABLE_PROMPT 1
-set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path='$DBUS_LAUNCHD_SESSION_BUS_SOCKET
+set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'
 set -gx LANG en_US.UTF-8

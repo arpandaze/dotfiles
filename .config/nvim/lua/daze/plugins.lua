@@ -237,6 +237,10 @@ return packer.startup(function(use)
 		end,
 	})
 
+  use({
+    "tikhomirov/vim-glsl"
+  })
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
