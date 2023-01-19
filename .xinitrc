@@ -29,15 +29,6 @@ xset fp+ /usr/local/lib/X11/fonts/ghostscript
 xset fp+ /usr/X11R6/lib/X11/fonts/TTF/
 
 # xset fp rehash
-xset b 100 0 0
-xset r rate 400 35
-
-# xmodmap -e "add Control = Control_L"
-setxkbmap -option caps:escape
-setxkbmap -option altwin:swap_lalt_lwin
-xmodmap -e "keycode 9 = asciitilde grave"
-xmodmap -e "keycode 64 = keycode 133"
-xmodmap -e "keycode 133 = keycode 64"
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK

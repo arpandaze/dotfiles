@@ -27,7 +27,15 @@ if [ -x "$(command -v feh)" ]; then
   feh --bg-scale $SCRIPTPATH/background.jpg
 fi
 
-lxqt-policykit-agent &> /dev/null &
+xset b 100 0 0
+xset r rate 400 35
+
+# xmodmap -e "add Control = Control_L"
+setxkbmap -option caps:escape
+setxkbmap -option altwin:swap_lalt_lwin
+xmodmap -e "keycode 9 = asciitilde grave"
+xmodmap -e "keycode 64 = keycode 133"
+xmodmap -e "keycode 133 = keycode 64"
 
 index=0
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"

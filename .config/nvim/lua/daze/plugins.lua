@@ -228,6 +228,11 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Git Plugin
+	use({
+		"tpope/vim-fugitive",
+	})
+
 	-- Latex Plugin
 	use({
 		"lervag/vimtex",
@@ -237,9 +242,9 @@ return packer.startup(function(use)
 		end,
 	})
 
-  use({
-    "tikhomirov/vim-glsl"
-  })
+	use({
+		"tikhomirov/vim-glsl",
+	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
