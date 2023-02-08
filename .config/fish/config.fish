@@ -35,7 +35,7 @@ alias gch="git checkout"
 alias ls="exa"
 alias la="exa -la"
 alias sync='osync.sh ~/.config/osync/sync.conf'
-alias yay="paru --color always"
+# alias yay="paru --color always"
 alias du="du -h"
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 alias rm="trash"

@@ -36,7 +36,7 @@ if [[ $1 == "p" || $1 == "picom" ]]; then
     command nvim ~/.config/picom.conf
 fi
 if [[ $1 == "leftwm" || $1 == "wm" ]]; then
-    command nvim ~/.config/leftwm/config.toml
+    command nvim ~/.config/leftwm/config.ron
 fi
 if [[ $1 == "shkd" || $1 == "binds" || $1 == "sxhkd" || $1 == "skhd" ]]; then
     command nvim ~/.config/skhd/skhdrc

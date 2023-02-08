@@ -233,6 +233,10 @@ return packer.startup(function(use)
 		"tpope/vim-fugitive",
 	})
 
+  use({
+    "ron-rs/ron.vim",
+  })
+
 	-- Latex Plugin
 	use({
 		"lervag/vimtex",
