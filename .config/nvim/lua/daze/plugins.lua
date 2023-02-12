@@ -108,7 +108,7 @@ return packer.startup(function(use)
 					end,
 				}),
 				-- Reference: https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-				ensure_installed = { "sumneko_lua", "rust_analyzer", "pyright", "tsserver" },
+				ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "tsserver" },
 			})
 			vim.diagnostic.config({
 				virtual_text = false,
@@ -215,8 +215,21 @@ return packer.startup(function(use)
 			require("leap").add_default_mappings()
 
 			-- Disable x and X leap motion
-			vim.keymap.del({ "x", "o" }, "x")
-			vim.keymap.del({ "x", "o" }, "X")
+		end,
+	})
+
+	use({
+		"ggandor/flit.nvim",
+		config = function()
+			require("flit").setup({
+				keys = { f = "f", F = "F", t = "t", T = "T" },
+				-- A string like "nv", "nvo", "o", etc.
+				labeled_modes = "v",
+				multiline = true,
+				-- Like `leap`s similar argument (call-specific overrides).
+				-- E.g.: opts = { equivalence_classes = {} }
+				opts = {},
+			})
 		end,
 	})
 
@@ -233,9 +246,9 @@ return packer.startup(function(use)
 		"tpope/vim-fugitive",
 	})
 
-  use({
-    "ron-rs/ron.vim",
-  })
+	use({
+		"ron-rs/ron.vim",
+	})
 
 	-- Latex Plugin
 	use({
