@@ -17,7 +17,7 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths ~/.local/scripts ~/.local/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths /usr/local/cuda/bin ~/.local/scripts ~/.local/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
 
 # Alias
@@ -42,6 +42,7 @@ alias rm="trash"
 alias space="dust -d 2"
 alias tma="tmux attach -t"
 alias python="python3"
+alias gputop="nvtop"
 
 
 # Disable ENV prompt since it is already shown on the right side

@@ -36,13 +36,13 @@ remap("n", "<leader>fw", "<CMD>Telescope live_grep<CR>", opts)
 
 -- LSP Binds
 remap("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
-remap("n", "<space>e", "<CMD> lua vim.diagnostic.open_float()<CR>", opts)
+remap("n", "<leader>e", "<CMD> lua vim.diagnostic.open_float()<CR>", opts)
 remap("n", "[d", "<CMD> lua vim.diagnostic.goto_prev()<CR>", opts)
 remap("n", "]d", "<CMD> lua vim.diagnostic.goto_next()<CR>", opts)
 remap("n", "<leader>q", "<CMD> lua vim.diagnostic.setloclist()<CR>", opts)
 remap("n", "gD", "<CMD> lua vim.lsp.buf.declaration()<CR>", opts)
 remap("n", "gd", "<CMD> lua vim.lsp.buf.definition()<CR>", opts)
-remap("n", "K", "<CMD> lua vim.lsp.buf.hover()<CR>", opts)
+remap("n", "<leader>k", "<CMD> lua vim.lsp.buf.hover()<CR>", opts)
 remap("n", "gi", "<CMD> lua vim.lsp.buf.implementation()<CR>", opts)
 remap("n", "<C-k>", "<CMD> lua vim.lsp.buf.signature_help()<CR>", opts)
 

@@ -1,7 +1,7 @@
 {
   "dpr": {
     "prefix": "dpr",
-    "body": ["console.log($1);"],
+    "body": ["console.log(`${$1}`);"],
     "description": "Debug print"
   }
 }
