@@ -62,6 +62,7 @@ remap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
 -- Buffer Navigation
 remap("n", "<leader>n", ":bnext<CR>", opts)
 remap("n", "<leader>b", ":bprevious<CR>", opts)
+remap("n", "<leader>x", ":bd<CR>", opts)
 
 -- Leap search visible space
 remap("n", "<leader>g", "<CMD> lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>", opts)

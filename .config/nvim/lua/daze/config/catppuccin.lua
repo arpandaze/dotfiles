@@ -1,6 +1,15 @@
 require("catppuccin").setup({
 	transparent_background = false,
 	compile = { enabled = true },
+	highlight_overrides = {
+		mocha = function(mocha)
+			return {
+				DashboardIcon = { fg = mocha.green },
+				DashboardDesc = { fg = mocha.blue },
+				DashboardKey = { fg = mocha.peach },
+			}
+		end,
+	},
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },
@@ -55,7 +64,10 @@ require("catppuccin").setup({
 		symbols_outline = true,
 		telescope = true,
 		treesitter = true,
+		treesitter_context = true,
 		which_key = true,
+		mason = true,
+		harpoon = true,
 	},
 })
 vim.g.catppuccin_flavour = "mocha"
