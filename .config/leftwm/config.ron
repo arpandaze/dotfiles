@@ -51,7 +51,7 @@
     sloppy_mouse_follows_focus: true,
     auto_derive_workspaces: true,
     keybind: [
-        (command: Execute, value: "exec /home/daze/.config/rofi/launchers/misc/launcher.sh", modifier: ["modkey"], key: "p"),
+        (command: Execute, value: "exec ~/.config/rofi/launchers/misc/launcher.sh", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "killall picom", modifier: ["modkey", "Shift"], key: "p"),
         (command: SetLayout, value: "Monocle", modifier: ["modkey"], key: "f"),
         (command: FloatingToTile, value: "", modifier: ["modkey", "Shift"], key: "t"),
@@ -100,7 +100,7 @@
         (command: MoveToTag, value: "8", modifier: ["modkey", "Shift"], key: "8"),
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
         (command: ToggleFullScreen, value: "", modifier: ["modkey"], key: "space"),
-        (command: Execute, value: "/home/daze/.local/scripts/toggle_polybar", modifier: ["modkey", "Shift"], key: "space"),
+        (command: Execute, value: "~/.local/scripts/toggle_polybar", modifier: ["modkey", "Shift"], key: "space"),
         // (command: ToggleNBFullScreen, value: "/home/daze/.local/scripts/toggle_polybar", modifier: ["modkey", "Shift"], key: "space"),
         (command: Execute, value: "maim -s --hidecursor | xclip -selection clipboard -t image/png", modifier: [], key: "Print"),
         (command: ToggleScratchPad, value: "Alacritty", modifier: ["modkey"], key: "Return"),

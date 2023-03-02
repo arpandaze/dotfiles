@@ -72,3 +72,9 @@ remap("n", "<PageUp>", "<Nop>", opts)
 remap("n", "<PageDown>", "<Nop>", opts)
 remap("n", "<S-PageUp>", "<Nop>", opts)
 remap("n", "<S-PageDown>", "<Nop>", opts)
+
+-- Hard mode
+-- remap("n", "h", "<Nop>", opts)
+-- remap("n", "j", "<Nop>", opts)
+-- remap("n", "k", "<Nop>", opts)
+-- remap("n", "l", "<Nop>", opts)
