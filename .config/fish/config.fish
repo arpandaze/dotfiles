@@ -23,8 +23,9 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths /usr/local/cuda/bin ~/.local/scripts ~/.local/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths /usr/local/cuda/bin ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
+set -gx GOPATH ~/go
 
 # Alias
 alias py="python3"

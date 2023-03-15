@@ -1,0 +1,29 @@
+{
+  "dpr": {
+    "prefix": "dpr",
+    "body": ["fmt.Println(\"$1\")"],
+    "description": "Debug print"
+  },
+  "tfu": {
+    "prefix": "tfu",
+    "body": [
+      "func $1(c *gin.Context){",
+      "_, span := Tracer.Start(c.Request.Context(), \"$1()\")",
+      "defer span.End()",
+      "}"
+    ],
+    "description": "Debug print"
+  },
+  "err": {
+    "prefix": "err",
+    "body": [
+      "if err != nil {",
+      "Logger(c).Sugar().Errorw(\"$1\",",
+      "\"error\", err,",
+      ")",
+      "panic(err)",
+      "}"
+    ],
+    "description": "Debug print"
+  }
+}
