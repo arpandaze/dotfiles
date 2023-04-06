@@ -8,7 +8,7 @@
     "prefix": "tfu",
     "body": [
       "func $1(c *gin.Context){",
-      "_, span := Tracer.Start(c.Request.Context(), \"$1()\")",
+      "_, span := telemetry.Tracer.Start(c.Request.Context(), \"$1()\")",
       "defer span.End()",
       "}"
     ],
@@ -18,7 +18,7 @@
     "prefix": "err",
     "body": [
       "if err != nil {",
-      "Logger(c).Sugar().Errorw(\"$1\",",
+      "telemetry.Logger(c).Sugar().Errorw(\"$1\",",
       "\"error\", err,",
       ")",
       "panic(err)",

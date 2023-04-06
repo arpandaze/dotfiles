@@ -115,6 +115,8 @@ return packer.startup(function(use)
     end,
   })
 
+  use("sbdchd/neoformat")
+
   use({
     "VonHeikemen/lsp-zero.nvim",
     branch = "v1.x",
@@ -133,16 +135,19 @@ return packer.startup(function(use)
       { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lua" },
       { "hrsh7th/cmp-cmdline" },
-
+      { "zbirenbaum/copilot-cmp" },
       -- Snippets
       { "L3MON4D3/LuaSnip" }, -- Required
       { "rafamadriz/friendly-snippets" }, -- Optional
     },
     config = function()
       require("daze.config.lsp-zero")
-      -- require("daze.config.null-ls")
+      require("daze.config.copilot")
     end,
   })
+
+  -- Github Copilot
+  use { "zbirenbaum/copilot.lua" }
 
   -- Commenting
   use({

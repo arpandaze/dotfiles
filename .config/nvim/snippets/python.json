@@ -3,5 +3,10 @@
     "prefix": "dpr",
     "body": ["print(f\"{$1}\")"],
     "description": "Debug print"
+  },
+  "ity": {
+    "prefix": "ity",
+    "body": ["  # type: ignore"],
+    "description": "Ignore type"
   }
 }
