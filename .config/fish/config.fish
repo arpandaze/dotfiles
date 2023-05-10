@@ -23,11 +23,15 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths /usr/local/cuda/bin ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths $PYENV_ROOT/bin ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin /opt/anaconda/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
 set -gx GOPATH ~/go
 
+pyenv init - | source
+
 # Alias
+alias gcc="/usr/bin/gcc"
+alias g++="/usr/bin/g++"
 alias py="python3"
 alias vim="nvim"
 alias vi="nvim"
@@ -35,8 +39,9 @@ alias c="clear"
 alias top="htop"
 alias po="poetry"
 alias q="exit"
+alias docker="podman"
 alias dc="docker-compose"
-alias dk="docker"
+alias dk="podman"
 alias gs="git status"
 alias gch="git checkout"
 alias ls="exa"
@@ -56,3 +61,12 @@ alias gputop="nvtop"
 set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'
 set -gx LANG en_US.UTF-8
+set -Ux PYENV_ROOT $HOME/.pyenv
+
+if test -z "$XDG_CURRENT_DESKTOP"
+    set -Ux XDG_CURRENT_DESKTOP GNOME
+end
+
+if test -z "$QT_QPA_PLATFORMTHEME"
+   set -Ux QT_QPA_PLATFORMTHEME qt5ct
+end

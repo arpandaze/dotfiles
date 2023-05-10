@@ -8,8 +8,9 @@
     "prefix": "tfu",
     "body": [
       "func $1(c *gin.Context){",
-      "_, span := telemetry.Tracer.Start(c.Request.Context(), \"$1()\")",
+      "_, span := Tracer.Start(c.Request.Context(), \"$1()\")",
       "defer span.End()",
+      "l := Logger(c).Sugar()",
       "}"
     ],
     "description": "Debug print"
@@ -18,12 +19,13 @@
     "prefix": "err",
     "body": [
       "if err != nil {",
-      "telemetry.Logger(c).Sugar().Errorw(\"$1\",",
+      "l.Errorw(\"$1\",",
       "\"error\", err,",
       ")",
-      "panic(err)",
+      " c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{\"msg\": \"Unknown error occured!\", \"context\": TraceIDFromContext(c)})",
+      "return",
       "}"
     ],
-    "description": "Debug print"
+    "description": "Error handle"
   }
 }

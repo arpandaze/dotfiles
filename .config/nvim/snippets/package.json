@@ -26,6 +26,10 @@
         "path": "./lua.json"
       },
       {
+        "language": "dart",
+        "path": "./dart.json"
+      },
+      {
         "language": "go",
         "path": "./go.json"
       }
