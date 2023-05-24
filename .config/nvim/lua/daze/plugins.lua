@@ -204,10 +204,10 @@ return packer.startup(function(use)
     use({"stevearc/dressing.nvim"})
 
     -- Dart & Flutter Plugin
-    use {
-        'akinsho/flutter-tools.nvim',
-        config = function() require("daze.config.flutter-tools") end
-    }
+    -- use {
+    --     'akinsho/flutter-tools.nvim',
+    --     config = function() require("daze.config.flutter-tools") end
+    -- }
 
     use({"tikhomirov/vim-glsl"})
 

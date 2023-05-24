@@ -55,6 +55,7 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 alias python="python3"
 alias gputop="nvtop"
+alias flutter-run="flutter run --pid-file /tmp/flutter.pid"
 
 
 # Disable ENV prompt since it is already shown on the right side
