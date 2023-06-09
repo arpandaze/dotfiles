@@ -61,6 +61,7 @@ alias flutter-run="flutter run --pid-file /tmp/flutter.pid"
 # Disable ENV prompt since it is already shown on the right side
 set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'
+set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
 set -gx LANG en_US.UTF-8
 set -Ux PYENV_ROOT $HOME/.pyenv
 

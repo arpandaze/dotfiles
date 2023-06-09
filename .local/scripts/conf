@@ -1,48 +1,70 @@
 #!/usr/bin/env bash
 
-if [[ $1 == "zsh" || $1 == "z" ]]; then
-    command nvim ~/.zshrc && source ~/.zshrc
+if [[ -z $1 ]]; then
+    options=("zsh" "tmux" "bash" "fish" "alacritty" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme", "scripts", "conf")
+    selected_option=$(printf '%s\n' "${options[@]}" | fzf)
+    if [[ -z $selected_option ]]; then
+        exit 0
+    fi
+else
+    selected_option=$1
 fi
-if [[ $1 == "tmux" || $1 == "mux" ]]; then
-    command nvim ~/.tmux.conf
-fi
-if [[ $1 == "bash" ]]; then
-    command nvim ~/.bashrc
-fi
-if [[ $1 == "fish" ]]; then
-    pwd=$(pwd)
-    cd ~/.config/fish && nvim ~/.config/fish/config.fish && cd $pwd
-fi
-if [[ $1 == "alacritty" || $1 == "ala" ]]; then
-    command nvim ~/.config/alacritty/alacritty.yml
-fi
-if [[ $1 == "vim" || $1 == "vi" || $1 == "nvim" ]]; then
-    pwd=$(pwd)
-    cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd $pwd
-fi
-if [[ $1 == "ins" || $1 == "installscript" ]]; then
-    command nvim ~/.config/script/install.sh
-fi
-if [[ $1 == "fm" || $1 == "vifm" ]]; then
-    command nvim ~/.config/vifm/vifmrc
-fi
-if [[ $1 == "x" || $1 == "xinit" ]]; then
-    command nvim ~/.xinitrc
-fi
-if [[ $1 == "r" || $1 == "rofi" ]]; then
-    command nvim ~/.config/rofi
-fi
-if [[ $1 == "p" || $1 == "picom" ]]; then
-    command nvim ~/.config/picom.conf
-fi
-if [[ $1 == "leftwm" || $1 == "wm" ]]; then
-    command nvim ~/.config/leftwm/config.ron
-fi
-if [[ $1 == "shkd" || $1 == "binds" || $1 == "sxhkd" || $1 == "skhd" ]]; then
-    command nvim ~/.config/skhd/skhdrc
-fi
-if [[ $1 == "wmtheme" || $1 == "theme" ]]; then
-    pwd=$(pwd)
-    cd ~/.config/leftwm && nvim ~/.config/leftwm/themes.toml && cd $pwd
-fi
+
+case $selected_option in
+    "zsh" | "z")
+        command nvim ~/.zshrc && source ~/.zshrc
+        ;;
+    "tmux" | "mux")
+        command nvim ~/.config/tmux/tmux.conf
+        ;;
+    "bash")
+        command nvim ~/.bashrc
+        ;;
+    "fish")
+        pwd=$(pwd)
+        cd ~/.config/fish && nvim ~/.config/fish/config.fish && cd $pwd
+        ;;
+    "alacritty" | "ala")
+        command nvim ~/.config/alacritty/alacritty.yml
+        ;;
+    "vim" | "vi" | "nvim" | "neovim")
+        pwd=$(pwd)
+        cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd $pwd
+        ;;
+    "ins" | "installscript")
+        command nvim ~/.config/script/install.sh
+        ;;
+    "fm" | "vifm")
+        command nvim ~/.config/vifm/vifmrc
+        ;;
+    "x" | "xinit" | "xinitrc")
+        command nvim ~/.xinitrc
+        ;;
+    "r" | "rofi")
+        command nvim ~/.config/rofi
+        ;;
+    "p" | "picom")
+        command nvim ~/.config/picom.conf
+        ;;
+    "leftwm" | "wm")
+        command nvim ~/.config/leftwm/config.ron
+        ;;
+    "shkd" | "binds" | "sxhkd" | "skhd")
+        command nvim ~/.config/skhd/skhdrc
+        ;;
+    "script" | "scripts")
+        command nvim ~/.local/scripts/
+        ;;
+    "conf")
+        command nvim ~/.local/scripts/conf
+        ;;
+    "wmtheme" | "theme")
+        pwd=$(pwd)
+        cd ~/.config/leftwm && nvim ~/.config/leftwm/themes.toml && cd $pwd
+        ;;
+    *)
+        echo "Invalid option: $selected_option"
+        exit 1
+        ;;
+esac
 
