@@ -23,7 +23,7 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths $PYENV_ROOT/bin ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin /opt/anaconda/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths $PYENV_ROOT/bin ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
 set -gx GOPATH ~/go
 

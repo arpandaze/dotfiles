@@ -80,7 +80,7 @@ return packer.startup(function(use)
     -- Top buffer line
     use({
         "akinsho/bufferline.nvim",
-        tag = "v2.*",
+        tag = "v4.*",
         config = function()
             require("bufferline").setup({
                 options = {
@@ -136,6 +136,12 @@ return packer.startup(function(use)
         config = function() require("gitsigns").setup() end
     })
 
+    -- Hardtime
+    use({
+        "m4xshen/hardtime.nvim",
+        config = function() require("hardtime").setup() end
+    })
+
     -- Status Line Related
     use({
         "nvim-lualine/lualine.nvim",
@@ -161,8 +167,6 @@ return packer.startup(function(use)
         "ggandor/leap.nvim",
         config = function()
             require("leap").add_default_mappings()
-
-            -- Disable x and X leap motion
         end
     })
 
@@ -197,6 +201,7 @@ return packer.startup(function(use)
         "lervag/vimtex",
         config = function()
             vim.g.vimtex_view_method = "zathura"
+            -- vim.g.vimtex_compiler_method = "xelatex"
             vim.g.vimtex_syntax_enabled = 0
         end
     })

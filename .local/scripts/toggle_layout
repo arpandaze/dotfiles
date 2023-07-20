@@ -3,9 +3,11 @@
 if [ "$(setxkbmap -print | grep colemak_dh)" ]
 then
   setxkbmap us
+  leftwm command SoftReload
   DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send 'Switched Layout: Qwerty'
 else
   setxkbmap us -variant colemak_dh
+  leftwm command SoftReload
   DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send 'Switched Layout: Colemak DH'
 fi
 

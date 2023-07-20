@@ -38,4 +38,5 @@ FG='#a8a3f7'
 BG='#3f3c6d'
 
 # xmonad &
+# setxkbmap us -variant colemak_dh
 exec leftwm
