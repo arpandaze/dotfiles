@@ -159,15 +159,15 @@ return packer.startup(function(use)
     use({
         "kylechui/nvim-surround",
         tag = "*",
-        config = function() require("nvim-surround").setup() end
+        config = function()
+            require("nvim-surround").setup({keymaps = {visual = "A"}})
+        end
     })
 
     -- Motion
     use({
         "ggandor/leap.nvim",
-        config = function()
-            require("leap").add_default_mappings()
-        end
+        config = function() require("leap").add_default_mappings() end
     })
 
     use({
