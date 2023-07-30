@@ -1,225 +1,223 @@
-local fn = vim.fn
+return {
+	"wbthomason/packer.nvim",
+	"nvim-lua/plenary.nvim",
+	"lewis6991/impatient.nvim",
 
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
-        "git", "clone", "--depth", "1",
-        "https://github.com/wbthomason/packer.nvim", install_path
-    })
-    print("Installing packer close and reopen Neovim...")
-    vim.cmd([[packadd packer.nvim]])
-end
+	-- Autopair
+	{
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({ enable_check_bracket_line = false })
+		end,
+	},
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+	-- Theme
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			require("daze.config.catppuccin")
+		end,
+	},
 
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then return end
+	-- Dashboard
+	{
+		"glepnir/dashboard-nvim",
+		config = function()
+			require("daze.config.dashboard")
+		end,
+	},
 
--- Have packer use a popup window
-packer.init({
-    display = {
-        open_fn = function()
-            return require("packer.util").float({border = "none"})
-        end
-    }
-})
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "0.1.x",
+		config = function()
+			require("daze.config.telescope")
+		end,
+	},
 
-return packer.startup(function(use)
-    use("wbthomason/packer.nvim")
-    use("nvim-lua/plenary.nvim")
-    use("lewis6991/impatient.nvim")
+	-- Harpoon for nagivation
+	"ThePrimeagen/harpoon",
 
-    -- Autopair
-    use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({enable_check_bracket_line = false})
-        end
-    })
+	-- Indentation guides
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("daze.config.indent-blankline")
+		end,
+	},
 
-    -- Theme
-    use({
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function() require("daze.config.catppuccin") end
-    })
+	"arkav/lualine-lsp-progress",
 
-    -- Dashboard
-    use({
-        "glepnir/dashboard-nvim",
-        config = function() require("daze.config.dashboard") end
-    })
+	-- Top buffer line
+	{
+		"akinsho/bufferline.nvim",
+		version = "v4.*",
+		config = function()
+			require("bufferline").setup({
+				options = {
+					offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+				},
+				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+			})
+		end,
+	},
 
-    -- Telescope
-    use({
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.x",
-        config = function() require("daze.config.telescope") end
-    })
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+	},
 
-    -- Harpoon for nagivation
-    use("ThePrimeagen/harpoon")
+	"sbdchd/neoformat",
 
-    -- Indentation guides
-    use({
-        "lukas-reineke/indent-blankline.nvim",
-        config = function() require("daze.config.indent-blankline") end
-    })
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			-- { "jose-elias-alvarez/null-ls.nvim" },
 
-    use("kyazdani42/nvim-web-devicons")
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-cmdline" },
+			{ "zbirenbaum/copilot-cmp" }, -- Snippets
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+		},
+		config = function()
+			require("daze.config.lsp-zero")
+			require("daze.config.copilot")
+		end,
+	},
 
-    use("arkav/lualine-lsp-progress")
+	-- Github Copilot
+	"zbirenbaum/copilot.lua",
 
-    -- Top buffer line
-    use({
-        "akinsho/bufferline.nvim",
-        tag = "v4.*",
-        config = function()
-            require("bufferline").setup({
-                options = {
-                    offsets = {{filetype = "NvimTree", text = "", padding = 1}}
-                },
-                highlights = require("catppuccin.groups.integrations.bufferline").get()
-            })
-        end
-    })
+	-- Commenting
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("daze.config.comment")
+		end,
+	},
 
-    use({
-        "kyazdani42/nvim-tree.lua",
-        tag = "nightly",
-        config = function() require("nvim-tree").setup() end
-    })
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
 
-    use("sbdchd/neoformat")
+	-- Hardtime
+	{
+		"m4xshen/hardtime.nvim",
+		config = function()
+			require("hardtime").setup()
+		end,
+	},
 
-    use({
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v1.x",
-        requires = {
-            -- LSP Support
-            {"neovim/nvim-lspconfig"}, {"williamboman/mason.nvim"},
-            {"williamboman/mason-lspconfig.nvim"},
-            -- { "jose-elias-alvarez/null-ls.nvim" },
+	-- Status Line Related
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("daze.config.lualine")
+		end,
+	},
 
-            -- Autocompletion
-            {"hrsh7th/nvim-cmp"}, {"hrsh7th/cmp-nvim-lsp"},
-            {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"},
-            {"saadparwaiz1/cmp_luasnip"}, {"hrsh7th/cmp-nvim-lua"},
-            {"hrsh7th/cmp-cmdline"}, {"zbirenbaum/copilot-cmp"}, -- Snippets
-            {"L3MON4D3/LuaSnip"}, -- Required
-            {"rafamadriz/friendly-snippets"} -- Optional
-        },
-        config = function()
-            require("daze.config.lsp-zero")
-            require("daze.config.copilot")
-        end
-    })
+	-- Treesitter for highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("daze.config.nvim-treesitter")
+		end,
+	},
 
-    -- Github Copilot
-    use {"zbirenbaum/copilot.lua"}
+	-- Visual surround
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		config = function()
+			require("nvim-surround").setup({ keymaps = { visual = "A" } })
+		end,
+	},
 
-    -- Commenting
-    use({
-        "numToStr/Comment.nvim",
-        config = function() require("daze.config.comment") end
-    })
+	-- Motion
+	{
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	},
 
-    use({
-        "lewis6991/gitsigns.nvim",
-        config = function() require("gitsigns").setup() end
-    })
+	{
+		"ggandor/flit.nvim",
+		config = function()
+			require("flit").setup({
+				keys = { f = "f", F = "F", t = "t", T = "T" },
+				-- A string like "nv", "nvo", "o", etc.
+				labeled_modes = "v",
+				multiline = true,
+				-- Like `leap`s similar argument (call-specific overrides).
+				-- E.g.: opts = { equivalence_classes = {} }
+				lazy = {},
+			})
+		end,
+	},
 
-    -- Hardtime
-    use({
-        "m4xshen/hardtime.nvim",
-        config = function() require("hardtime").setup() end
-    })
+	-- Repeat
+	{
+		"tpope/vim-repeat",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	},
 
-    -- Status Line Related
-    use({
-        "nvim-lualine/lualine.nvim",
-        config = function() require("daze.config.lualine") end
-    })
+	-- Git Plugin
+	{ "tpope/vim-fugitive" },
 
-    -- Treesitter for highlighting
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = function() require("daze.config.nvim-treesitter") end
-    })
+	{ "ron-rs/ron.vim" },
 
-    -- Visual surround
-    use({
-        "kylechui/nvim-surround",
-        tag = "*",
-        config = function()
-            require("nvim-surround").setup({keymaps = {visual = "A"}})
-        end
-    })
+	-- Latex Plugin
+	{
+		"lervag/vimtex",
+		config = function()
+			vim.g.vimtex_view_method = "zathura"
+			-- vim.g.vimtex_compiler_method = "xelatex"
+			vim.g.vimtex_syntax_enabled = 0
+		end,
+	},
 
-    -- Motion
-    use({
-        "ggandor/leap.nvim",
-        config = function() require("leap").add_default_mappings() end
-    })
+	{ "stevearc/dressing.nvim" },
 
-    use({
-        "ggandor/flit.nvim",
-        config = function()
-            require("flit").setup({
-                keys = {f = "f", F = "F", t = "t", T = "T"},
-                -- A string like "nv", "nvo", "o", etc.
-                labeled_modes = "v",
-                multiline = true,
-                -- Like `leap`s similar argument (call-specific overrides).
-                -- E.g.: opts = { equivalence_classes = {} }
-                opts = {}
-            })
-        end
-    })
+	-- Dart & Flutter Plugin
+	-- use {
+	--     'akinsho/flutter-tools.nvim',
+	--     config = function() require("daze.config.flutter-tools") end
+	-- }
 
-    -- Repeat
-    use({
-        "tpope/vim-repeat",
-        config = function() require("leap").add_default_mappings() end
-    })
+	{ "tikhomirov/vim-glsl" },
 
-    -- Git Plugin
-    use({"tpope/vim-fugitive"})
-
-    use({"ron-rs/ron.vim"})
-
-    -- Latex Plugin
-    use({
-        "lervag/vimtex",
-        config = function()
-            vim.g.vimtex_view_method = "zathura"
-            -- vim.g.vimtex_compiler_method = "xelatex"
-            vim.g.vimtex_syntax_enabled = 0
-        end
-    })
-
-    use({"stevearc/dressing.nvim"})
-
-    -- Dart & Flutter Plugin
-    -- use {
-    --     'akinsho/flutter-tools.nvim',
-    --     config = function() require("daze.config.flutter-tools") end
-    -- }
-
-    use({"tikhomirov/vim-glsl"})
-
-    use({
-        "karb94/neoscroll.nvim",
-        config = function() require("daze.config.neoscroll") end
-    })
-
-    if PACKER_BOOTSTRAP then require("packer").sync() end
-end)
+	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("daze.config.neoscroll")
+		end,
+	},
+}

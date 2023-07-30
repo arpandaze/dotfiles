@@ -62,6 +62,6 @@ require("dashboard").setup({
 				key = "SPC f d",
 			},
 		},
-		footer = { "", "", "Loaded " .. require("dashboard.utils").get_packages_count() .. " packages" },
+		-- footer = { "", "", "Loaded " .. require("dashboard.utils").get_packages_count() .. " packages" },
 	},
 })
