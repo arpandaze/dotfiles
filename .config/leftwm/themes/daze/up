@@ -49,4 +49,7 @@ do
   let index=index+1
 done
 
+nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
+nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
+
 cd /home/daze/Desktop/actions-runner && ./run.sh &> /dev/null &

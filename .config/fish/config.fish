@@ -1,22 +1,12 @@
 # Start X at login
-# if status --is-interactive
-#   if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-#     exec startx -- -keeptty
-#   end
-# end
-
 if status --is-login
     if test (tty) = /dev/tty1
-        exec startx -- -keeptty # or start sway or whatever
+        exec startx -- -keeptty
     end
 end
 
 set fish_greeting
 zoxide init fish | source
-
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
 
 function fish_user_key_bindings
   fish_vi_key_bindings
