@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Get the current active sink
+current_sink=$(pacmd list-sinks | grep '* index' | awk '{print $3}')
+
+# Define the sink you want to toggle to
+toggle_sink=1  # Change this to the index of the USB-Audio sink (1 in your case)
+
+# Check if the script was called with the "--toggle" argument
+if [ "$1" == "--toggle" ]; then
+    if [ "$current_sink" != "$toggle_sink" ]; then
+        pactl set-default-sink $toggle_sink
+        pactl list short sink-inputs | while read -r input; do
+            input_index=$(echo "$input" | awk '{print $1}')
+            pactl move-sink-input "$input_index" "$toggle_sink"
+        done
+    else
+        pactl set-default-sink 0  # Change this to the index of the HDMI-stereo sink (0 in your case)
+    fi
+fi
+
+# Output the icon based on the current sink
+if [ "$current_sink" == "$toggle_sink" ]; then
+    echo "H"
+else
+    echo "E"
+fi
+
