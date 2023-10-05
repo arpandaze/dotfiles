@@ -29,7 +29,6 @@ alias c="clear"
 alias top="htop"
 alias po="poetry"
 alias q="exit"
-alias docker="podman"
 alias dc="docker-compose"
 alias dk="podman"
 alias gs="git status"
@@ -45,7 +44,6 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 alias python="python3"
 alias gputop="nvtop"
-alias flutter-run="flutter run --pid-file /tmp/flutter.pid"
 
 
 # Disable ENV prompt since it is already shown on the right side

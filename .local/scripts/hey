@@ -6,13 +6,13 @@ if [[ $1 == "install" ]]; then
     command sudo pacman -S ${@:2}
 fi
 if [[ $1 == "remove" ]]; then
-    appname=${@:2}
+    appname="${@:2}"
 
     if [ -z "$2" ]; then
       appname=$(pacman -Q | fzf | awk '{print $1;}')
     fi
 
-    command sudo pacman -Rns $appname
+    echo | sudo -S pacman -Rns "$appname"
 fi
 if [[ $1 == "uninstall" ]]; then
     command sudo pacman -Rns ${@:2}
