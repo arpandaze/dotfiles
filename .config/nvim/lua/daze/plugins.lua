@@ -76,7 +76,12 @@ return {
 		end,
 	},
 
-	"sbdchd/neoformat",
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("daze.config.conform")
+		end,
+	},
 
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -149,6 +154,13 @@ return {
 		end,
 	},
 
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup()
+		end,
+	},
+
 	-- Visual surround
 	{
 		"kylechui/nvim-surround",
@@ -193,16 +205,6 @@ return {
 	{ "tpope/vim-fugitive" },
 
 	{ "ron-rs/ron.vim" },
-
-	-- Latex Plugin
-	{
-		"lervag/vimtex",
-		config = function()
-			vim.g.vimtex_view_method = "zathura"
-			-- vim.g.vimtex_compiler_method = "xelatex"
-			vim.g.vimtex_syntax_enabled = 0
-		end,
-	},
 
 	{ "stevearc/dressing.nvim" },
 
