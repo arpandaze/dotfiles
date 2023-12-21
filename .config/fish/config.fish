@@ -13,7 +13,7 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths ~/.local/scripts ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin ~/.pub-cache/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
 set -gx GOPATH ~/go
 
@@ -29,7 +29,7 @@ alias top="htop"
 alias po="poetry"
 alias q="exit"
 alias dc="docker-compose"
-alias dk="podman"
+alias dk="docker"
 alias gs="git status"
 alias gch="git checkout"
 alias ls="exa"
@@ -51,6 +51,9 @@ set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'
 set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
 set -gx LANG en_US.UTF-8
 set -Ux PYENV_ROOT $HOME/.pyenv
+set -gx JAVA_HOME /opt/android-studio/jbr
+set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on'
+set -gx JAVA_FONTS /usr/share/fonts/TTF
 
 if test -z "$XDG_CURRENT_DESKTOP"
     set -Ux XDG_CURRENT_DESKTOP GNOME

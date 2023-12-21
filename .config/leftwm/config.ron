@@ -32,7 +32,7 @@
     layout_mode: Workspace,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Alacritty", value: "alacritty", x: 260, y: 140, height: 800, width: 1400),
+        (name: "Alacritty", value: "alacritty -e /home/daze/.local/scripts/tmc main", x: 260, y: 140, height: 800, width: 1400),
         (name: "Obsidian", value: "obsidian", x: 260, y: 140, height: 800, width: 1400),
         (name: "Telegram", value: "telegram-desktop", x: 260, y: 140, height: 800, width: 1400),
         (name: "Routine", value: "feh ~/.config/spadimages/routine.png --zoom 84 max", x: 260, y: 140, height: 800, width: 1400),

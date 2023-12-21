@@ -12,7 +12,7 @@ require('copilot').setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<L-CR>"
     },
     layout = {
       position = "bottom", -- | top | left | right
@@ -24,7 +24,7 @@ require('copilot').setup({
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = "<M-l>",
+      accept = "<C-l>",
       accept_word = false,
       accept_line = false,
       next = "<M-]>",

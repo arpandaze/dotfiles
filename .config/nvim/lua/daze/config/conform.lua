@@ -13,5 +13,7 @@ conform.setup({
 		json = { "prettier" },
 
 		rust = { "rustfmt" },
+
+        dart = { "dart_format" },
 	},
 })
