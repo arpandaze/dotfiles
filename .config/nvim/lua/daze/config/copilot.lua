@@ -12,7 +12,7 @@ require('copilot').setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<L-CR>"
+      open = "<M-CR>"
     },
     layout = {
       position = "bottom", -- | top | left | right
