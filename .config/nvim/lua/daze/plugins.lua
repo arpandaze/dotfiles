@@ -148,6 +148,7 @@ return {
 	-- Treesitter for highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
+        config = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
 		build = ":TSUpdate",
 		config = function()
 			require("daze.config.nvim-treesitter")

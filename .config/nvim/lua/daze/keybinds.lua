@@ -24,8 +24,9 @@ remap("n", "<C-b>", "<CMD>NvimTreeToggle<CR>", opts)
 remap("v", "p", '"_dP', opts)
 
 -- Format current file
-remap("n", "<leader>fm", "<cmd> :Neoformat<CR>", opts)
--- remap("n", "<leader>fm", "<CMD> lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>", opts)
+-- remap("n", "<leader>fm", "<cmd> :Neoformat<CR>", opts)
+remap("n", "<leader>fm", '<CMD> lua require("conform").format({ timeout_ms = 2000 })<CR>', opts)
+-- remap("n", "<leader>fm", '<CMD> lua require("conform").format.linewise.current()<CR>', opts)
 
 -- Toggle Comment
 remap("n", "<leader>c<leader>", '<CMD> lua require("Comment.api").toggle.linewise.current()<CR>', opts)
