@@ -1,7 +1,7 @@
 {
   "dpr": {
     "prefix": "dpr",
-    "body": ["print(\"$1\")"],
+    "body": ["print(\"$1\");"],
     "description": "Debug print"
   }
 }
