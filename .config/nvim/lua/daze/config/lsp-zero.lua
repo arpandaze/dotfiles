@@ -11,4 +11,6 @@ require("lspconfig").dartls.setup({
 
 lsp.setup()
 
+-- vim.lsp.inlay_hint.enable(0, true)
+
 require("daze.config.cmp")
