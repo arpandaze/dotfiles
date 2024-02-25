@@ -25,7 +25,7 @@ case $selected_option in
         cd ~/.config/fish && nvim ~/.config/fish/config.fish && cd $pwd
         ;;
     "alacritty" | "ala")
-        command nvim ~/.config/alacritty/alacritty.yml
+        command nvim ~/.config/alacritty/alacritty.toml
         ;;
     "vim" | "vi" | "nvim" | "neovim")
         pwd=$(pwd)

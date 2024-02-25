@@ -1,7 +1,5 @@
 #!/usr/bin/env -S bash -e
 
-sudo reflector --save /etc/pacman.d/mirrorlist --country Nepal,India --protocol https --latest 5
-
 if [[ $1 == "install" ]]; then
     command sudo pacman -S ${@:2}
 fi
