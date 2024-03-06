@@ -40,6 +40,7 @@ xmodmap -e "keycode 133 = keycode 64"
 # Hide cursor while typing
 unclutter &> /dev/null &
 
+sleep 3
 index=0
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
 leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y

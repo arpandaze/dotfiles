@@ -10,10 +10,20 @@ conform.setup({
 		-- Use a sub-list to run only the first available formatter
 		javascript = { "prettier" },
 
+		typescript = { "prettier" },
+
+		typescriptreact = { "prettier" },
+
+		javascriptreact = { "prettier" },
+
+		css = { "prettier" },
+
 		json = { "prettier" },
 
 		rust = { "rustfmt" },
 
         dart = { "dart_format" },
+
+        php = { "php-cs-fixer" },
 	},
 })

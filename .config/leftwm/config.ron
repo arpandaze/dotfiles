@@ -106,6 +106,7 @@
         (command: Execute, value: "~/.local/scripts/toggle_layout", modifier: ["modkey", "Shift"], key: "l"),
         // (command: ToggleNBFullScreen, value: "/home/daze/.local/scripts/toggle_polybar", modifier: ["modkey", "Shift"], key: "space"),
         (command: Execute, value: "maim -s --hidecursor | xclip -selection clipboard -t image/png", modifier: [], key: "Print"),
+        (command: Execute, value: "~/.local/scripts/ss_ocr", modifier: [], key: "Home"),
         (command: ToggleScratchPad, value: "Alacritty", modifier: ["modkey"], key: "Return"),
         (command: ToggleScratchPad, value: "Obsidian", modifier: ["modkey"], key: "n"),
         (command: ToggleScratchPad, value: "Telegram", modifier: ["modkey"], key: "t"),
