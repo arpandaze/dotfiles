@@ -1,5 +1,5 @@
 require("catppuccin").setup({
-	transparent_background = false,
+	transparent_background = true,
 	compile = { enabled = true },
 	highlight_overrides = {
 		mocha = function(mocha)
