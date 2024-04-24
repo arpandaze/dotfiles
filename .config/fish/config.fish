@@ -64,4 +64,5 @@ if test -z "$QT_QPA_PLATFORMTHEME"
    set -Ux QT_QPA_PLATFORMTHEME qt5ct
 end
 
+atuin init fish | source
 pyenv init - | source
