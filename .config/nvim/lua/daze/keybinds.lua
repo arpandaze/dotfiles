@@ -76,6 +76,8 @@ remap("n", "<S-PageDown>", "<Nop>", opts)
 
 remap("n", "<leader>k", "<C-u>zz", { desc = "Half page up" })
 remap("n", "<leader>j", "<C-d>zz", { desc = "Half page down" })
+remap("v", "<leader>k", "<C-u>zz", { desc = "Half page up" })
+remap("v", "<leader>j", "<C-d>zz", { desc = "Half page down" })
 
 -- Hard mode
 -- remap("n", "h", "<Nop>", opts)

@@ -130,12 +130,12 @@ return {
     },
 
     -- Hardtime
-    {
-        "m4xshen/hardtime.nvim",
-        config = function()
-            require("hardtime").setup()
-        end,
-    },
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     config = function()
+    --         require("hardtime").setup()
+    --     end,
+    -- },
 
     -- Status Line Related
     {
