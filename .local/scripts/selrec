@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Function to select recording area
+select_area() {
+    echo "Please click and drag to select the area to record"
+    SELECTED_AREA=$(xrectsel)
+    RECORDING_WIDTH=$(echo $SELECTED_AREA | cut -d'x' -f1)
+    RECORDING_HEIGHT=$(echo $SELECTED_AREA | cut -d'x' -f2 | cut -d'+' -f1)
+    RECORDING_X=$(echo $SELECTED_AREA | cut -d'+' -f2)
+    RECORDING_Y=$(echo $SELECTED_AREA | cut -d'+' -f3)
+}
+
+# Function to start recording
+start_recording() {
+    ffmpeg -video_size $RECORDING_WIDTH"x"$RECORDING_HEIGHT -framerate 30 -f x11grab -i :0.0+$RECORDING_X,$RECORDING_Y -f pulse -ac 2 -i default output.mp4
+}
+
+# Function to stop recording
+stop_recording() {
+    pkill ffmpeg
+}
+
+# Main function
+main() {
+    select_area
+    start_recording
+}
+
+# Trap Ctrl+C to stop recording before exiting
+trap stop_recording SIGINT
+
+# Run the main function
+main
+

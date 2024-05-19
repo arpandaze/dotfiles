@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Take screenshot using maim
+maim -s --hidecursor | tee /tmp/screenshot.png > /dev/null
+
+
+# Perform OCR using Tesseract
+text=$(tesseract /tmp/screenshot.png - 2>/dev/null)
+
+# Copy the recognized text to clipboard using xclip
+echo -n "$text" | xclip -selection clipboard
+
+# Clean up temporary files
+rm /tmp/screenshot.png
+
+echo "Screenshot taken, OCR performed, and text copied to clipboard."

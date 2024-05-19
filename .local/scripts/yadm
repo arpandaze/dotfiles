@@ -1,0 +1,6 @@
+
+function yc() {
+    cd ~
+    yadm enter lazygit
+    cd -
+}

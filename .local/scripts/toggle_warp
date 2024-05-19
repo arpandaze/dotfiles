@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if warp-cli is installed
+if ! command -v warp-cli &> /dev/null; then
+    echo "warp-cli is not installed. Please install it first."
+    exit 1
+fi
+
+# Toggle the connection
+toggle_connection() {
+    status=$(warp-cli status)
+    if [[ "$status" =~ "Connected" ]]; then
+        warp-cli disconnect
+        echo "Disconnecting from Warp..."
+    else
+        warp-cli connect
+        echo "Connecting to Warp..."
+    fi
+}
+
+# Call toggle_connection function
+toggle_connection
+
+# Optional: Update Polybar if it's running
+# if pgrep -x polybar >/dev/null; then
+#     polybar-msg hook warp-toggle 1
+# fi
+#

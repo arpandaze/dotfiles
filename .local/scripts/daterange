@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the earliest and latest commit dates
+earliest_commit_date=$(git log --date=iso --pretty=format:"%ad" | tail -n 1)
+latest_commit_date=$(git log --date=iso --pretty=format:"%ad" | head -n 1)
+
+# Extract the year and month from the dates
+earliest_year=$(date -d "$earliest_commit_date" +"%Y")
+earliest_month=$(date -d "$earliest_commit_date" +"%b")
+latest_year=$(date -d "$latest_commit_date" +"%Y")
+latest_month=$(date -d "$latest_commit_date" +"%b")
+
+# Print the work date range
+echo "Work Date Range: $earliest_month $earliest_year - $latest_month $latest_year"
