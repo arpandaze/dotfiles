@@ -44,10 +44,10 @@ remap("n", "<leader>[", "<CMD> lua vim.diagnostic.goto_prev()<CR>", opts)
 remap("n", "<leader>]", "<CMD> lua vim.diagnostic.goto_next()<CR>", opts)
 remap("n", "<leader>q", "<CMD> lua vim.diagnostic.setloclist()<CR>", opts)
 remap("n", "gD", "<CMD> lua vim.lsp.buf.declaration()<CR>", opts)
-remap("n", "gd", "<CMD> lua vim.lsp.buf.definition()<CR>", opts)
+remap("n", "gd", "<CMD> lua vim.lsp.buf.implementation()<CR>", opts)
 remap("n", "<leader>ca", "<CMD> lua vim.lsp.buf.code_action()<CR>", opts)
 remap("n", "<leader>k", "<CMD> lua vim.lsp.buf.hover()<CR>", opts)
-remap("n", "gi", "<CMD> lua vim.lsp.buf.implementation()<CR>", opts)
+remap("n", "gi", "<CMD> lua vim.lsp.buf.definition()<CR>", opts)
 remap("n", "<C-k>", "<CMD> lua vim.lsp.buf.signature_help()<CR>", opts)
 
 -- Select all
@@ -64,6 +64,7 @@ remap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
 remap("n", "<leader>n", ":bnext<CR>", opts)
 remap("n", "<leader>b", ":bprevious<CR>", opts)
 remap("n", "<leader>x", ":bd<CR>", opts)
+remap("n", "<leader>x", "<CMD> lua require('daze.functions').CloseBuffer()<CR>", opts)
 
 -- Leap search visible space
 remap("n", "<leader>g", "<CMD> lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>", opts)
@@ -84,3 +85,4 @@ remap("v", "<leader>j", "<C-d>zz", { desc = "Half page down" })
 -- remap("n", "j", "<Nop>", opts)
 -- remap("n", "k", "<Nop>", opts)
 -- remap("n", "l", "<Nop>", opts)
+

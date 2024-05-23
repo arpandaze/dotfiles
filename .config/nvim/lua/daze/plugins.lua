@@ -20,14 +20,6 @@ return {
         end,
     },
 
-    -- Dashboard
-    {
-        "glepnir/dashboard-nvim",
-        config = function()
-            require("daze.config.dashboard")
-        end,
-    },
-
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
@@ -88,8 +80,10 @@ return {
         branch = "v1.x",
         dependencies = {
             -- LSP Support
+            {
+                "williamboman/mason.nvim",
+            },
             { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             -- { "jose-elias-alvarez/null-ls.nvim" },
 
@@ -123,6 +117,15 @@ return {
     },
 
     {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function()
+            require("ts_context_commentstring").setup({
+                enable_autocmd = false,
+            })
+        end,
+    },
+
+    {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
@@ -130,12 +133,12 @@ return {
     },
 
     -- Hardtime
-    -- {
-    --     "m4xshen/hardtime.nvim",
-    --     config = function()
-    --         require("hardtime").setup()
-    --     end,
-    -- },
+    {
+        "m4xshen/hardtime.nvim",
+        config = function()
+            require("hardtime").setup()
+        end,
+    },
 
     -- Status Line Related
     {
@@ -151,13 +154,6 @@ return {
         build = ":TSUpdate",
         config = function()
             require("daze.config.nvim-treesitter")
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup()
         end,
     },
 
@@ -213,3 +209,4 @@ return {
         end,
     },
 }
+
