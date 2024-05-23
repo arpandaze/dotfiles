@@ -206,18 +206,10 @@ return {
 
     { "ron-rs/ron.vim" },
 
-    { "stevearc/dressing.nvim" },
-
-    -- Dart & Flutter Plugin
-    -- use {
-    --     'akinsho/flutter-tools.nvim',
-    --     config = function() require("daze.config.flutter-tools") end
-    -- }
-
     {
-        "karb94/neoscroll.nvim",
+        "stevearc/dressing.nvim",
         config = function()
-            require("daze.config.neoscroll")
+            require("daze.config.dressing")
         end,
     },
 }
