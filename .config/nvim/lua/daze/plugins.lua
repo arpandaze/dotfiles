@@ -132,14 +132,6 @@ return {
         end,
     },
 
-    -- Hardtime
-    {
-        "m4xshen/hardtime.nvim",
-        config = function()
-            require("hardtime").setup()
-        end,
-    },
-
     -- Status Line Related
     {
         "nvim-lualine/lualine.nvim",
@@ -209,4 +201,3 @@ return {
         end,
     },
 }
-
