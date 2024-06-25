@@ -33,10 +33,7 @@ xset fp+ /usr/X11R6/lib/X11/fonts/TTF/
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 
-# launch the external 60 second clock, and launch the workspace status bar
 FG='#a8a3f7'
 BG='#3f3c6d'
 
-# xmonad &
-# setxkbmap us -variant colemak_dh
 exec leftwm
