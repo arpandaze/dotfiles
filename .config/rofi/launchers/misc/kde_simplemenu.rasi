@@ -19,11 +19,11 @@ configuration {
 
 /* -- Breeze Light-- */
 * {
-    background:                     #EFF0F1FF;
+    background:                     #181d26FF;
     background-alt:              	#00000000;
-    background-bar:                 #93CEE999;
-    foreground:                     #000000A6;
-    accent:			            	#3DAEE9FF;
+    background-bar:                 #3daee966;
+    foreground:                     #f5f5f5e6;
+    accent:			            	#1d99f3ff;
 }
 
 /* -- Breeze Dark-- */
