@@ -1,31 +1,31 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"python",
-		"php",
+    ensure_installed = {
+        "python",
+        "php",
         "bash",
-		"c",
-		"cpp",
-		"rust",
-		"lua",
-		"javascript",
-		"typescript",
-		"swift",
-		"dart",
-		"sql",
-		"json",
-		"make",
-		"markdown",
-		"css",
-		"html",
-	},
+        "c",
+        "cpp",
+        "rust",
+        "lua",
+        "javascript",
+        "typescript",
+        "swift",
+        "dart",
+        "sql",
+        "json",
+        "make",
+        "markdown",
+        "css",
+        "html",
+    },
 
-	highlight = {
-		enable = true,
-		use_languagetree = true,
-	},
+    highlight = {
+        enable = true,
+        use_languagetree = true,
+    },
 
-	indent = {
-		enable = true,
-		disable = { "python", "yaml" },
-	},
+    indent = {
+        enable = true,
+        disable = { "python", "yaml" },
+    },
 })

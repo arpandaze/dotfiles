@@ -110,13 +110,6 @@ return {
 
     -- Commenting
     {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("daze.config.comment")
-        end,
-    },
-
-    {
         "JoosepAlviste/nvim-ts-context-commentstring",
         config = function()
             require("ts_context_commentstring").setup({
@@ -124,7 +117,12 @@ return {
             })
         end,
     },
-
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            require("daze.config.comment")
+        end,
+    },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -144,9 +142,14 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+
         config = function()
             require("daze.config.nvim-treesitter")
         end,
+
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
     },
 
     -- Visual surround
@@ -188,9 +191,6 @@ return {
             require("leap").add_default_mappings()
         end,
     },
-
-    -- Git Plugin
-    { "tpope/vim-fugitive" },
 
     { "ron-rs/ron.vim" },
 

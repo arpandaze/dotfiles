@@ -34,7 +34,7 @@ remap("v", "<leader>c<leader>", '<ESC><CMD> lua require("Comment.api").toggle.li
 
 -- Telescope Binds
 remap("n", "<leader>ff", "<CMD>Telescope find_files<CR>", opts)
-remap("n", "<leader>fw", "<CMD>Telescope live_grep<CR>", opts)
+remap("n", "<leader>fw", ":lua require('telescope.builtin').live_grep({ additional_args = { '--fixed-strings' }})<CR>", opts)
 remap("n", "<leader><leader>", "<CMD>Telescope buffers<CR>", opts)
 
 -- LSP Binds
@@ -66,6 +66,9 @@ remap("n", "<leader>b", ":bprevious<CR>", opts)
 remap("n", "<leader>x", ":bd<CR>", opts)
 remap("n", "<leader>x", "<CMD> lua require('daze.functions').CloseBuffer()<CR>", opts)
 
+-- Git Hunks
+remap("n", "<leader>gh", "<CMD> lua require('daze.functions').GitHunks()<CR>", opts)
+
 -- Leap search visible space
 remap("n", "<leader>g", "<CMD> lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>", opts)
 
@@ -85,4 +88,3 @@ remap("v", "<leader>j", "<C-d>zz", { desc = "Half page down" })
 -- remap("n", "j", "<Nop>", opts)
 -- remap("n", "k", "<Nop>", opts)
 -- remap("n", "l", "<Nop>", opts)
-
