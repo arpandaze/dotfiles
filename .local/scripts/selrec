@@ -1,34 +1,35 @@
 #!/bin/bash
 
-# Function to select recording area
-select_area() {
-    echo "Please click and drag to select the area to record"
-    SELECTED_AREA=$(xrectsel)
-    RECORDING_WIDTH=$(echo $SELECTED_AREA | cut -d'x' -f1)
-    RECORDING_HEIGHT=$(echo $SELECTED_AREA | cut -d'x' -f2 | cut -d'+' -f1)
-    RECORDING_X=$(echo $SELECTED_AREA | cut -d'+' -f2)
-    RECORDING_Y=$(echo $SELECTED_AREA | cut -d'+' -f3)
+# Set the filename for the GIF
+OUTPUT_FILE="/tmp/recorded.gif"
+
+# Select the area using xrectsel
+RECT=$(xrectsel)
+
+# Parse the selected area
+X=$(echo $RECT | cut -d' ' -f1)
+Y=$(echo $RECT | cut -d' ' -f2)
+WIDTH=$(echo $RECT | cut -d' ' -f3)
+HEIGHT=$(echo $RECT | cut -d' ' -f4)
+
+# Function to stop recording and copy the GIF to the clipboard
+cleanup() {
+  echo "Stopping recording..."
+  kill $FFMPEG_PID
+  wait $FFMPEG_PID
+  echo "Recording stopped. Copying to clipboard..."
+  xclip -selection clipboard -t image/gif -i "$OUTPUT_FILE"
+  echo "GIF copied to clipboard."
+  exit
 }
 
-# Function to start recording
-start_recording() {
-    ffmpeg -video_size $RECORDING_WIDTH"x"$RECORDING_HEIGHT -framerate 30 -f x11grab -i :0.0+$RECORDING_X,$RECORDING_Y -f pulse -ac 2 -i default output.mp4
-}
+# Trap the SIGINT signal (usually sent by the keybind) to stop recording
+trap cleanup SIGINT
 
-# Function to stop recording
-stop_recording() {
-    pkill ffmpeg
-}
+# Start recording using ffmpeg
+ffmpeg -y -f x11grab -s "${WIDTH}x${HEIGHT}" -i :0.0+${X},${Y} -vf "fps=10,scale=${WIDTH}:-1:flags=lanczos" "$OUTPUT_FILE" &
+FFMPEG_PID=$!
 
-# Main function
-main() {
-    select_area
-    start_recording
-}
-
-# Trap Ctrl+C to stop recording before exiting
-trap stop_recording SIGINT
-
-# Run the main function
-main
+# Wait for the recording process to complete
+wait $FFMPEG_PID
 

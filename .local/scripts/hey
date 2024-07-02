@@ -7,7 +7,7 @@ if [[ $1 == "remove" ]]; then
     appname="${@:2}"
 
     if [ -z "$2" ]; then
-      appname=$(pacman -Q | fzf --multi | awk '{print $1;}' | tr '\n' ' ')
+      appname=$(pacman -Q | fzf --multi --bind 'tab:toggle-all' | awk '{print $1;}' | tr '\n' ' ')
     fi
 
     command sudo -S pacman -Rns $appname
