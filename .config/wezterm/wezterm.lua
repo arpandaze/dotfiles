@@ -75,6 +75,7 @@ return {
         { key = "C",      mods = "CTRL|SHIFT", action = wezterm.action { CopyTo = "Clipboard" } },
         { key = "Insert", mods = "SHIFT",      action = wezterm.action { PasteFrom = "PrimarySelection" } },
         { key = "L",      mods = "CTRL",       action = wezterm.action { SendString = "\x0c" } },
+        { key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment, },
     },
     -- mouse_bindings = {
     --     { event = { Down = { streak = 1, button = 'Left' } },   mods = 'SHIFT', action = wezterm.action.SelectTextAtMouseCursor('Cell'), },
