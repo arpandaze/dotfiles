@@ -21,15 +21,13 @@ set --universal tide_right_prompt_items "python"
 
 
 # ------------ LIS ------------
-alias git="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' /usr/bin/git"
-alias work="lis"
 # ------------ LIS ------------
 
 # Alias
 alias gcc="/usr/bin/gcc"
 alias g++="/usr/bin/g++"
+alias k="kubectl"
 alias py="python3"
-alias yarn="pnpm"
 alias vim="nvim"
 alias vi="nvim"
 alias c="clear"

@@ -41,6 +41,7 @@ require('copilot').setup({
     hgcommit = false,
     svn = false,
     cvs = false,
+    go = true,
     ["."] = false,
   },
   copilot_node_command = 'node', -- Node.js version must be > 16.x
