@@ -30,7 +30,8 @@ xset fp+ /usr/X11R6/lib/X11/fonts/TTF/
 
 # xset fp rehash
 
-eval $(gnome-keyring-daemon --start)
+dbus-update-activation-environment --all
+eval $(gnome-keyring-daemon --start --components=secrets)
 export SSH_AUTH_SOCK
 
 FG='#a8a3f7'
