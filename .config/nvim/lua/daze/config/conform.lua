@@ -22,6 +22,8 @@ conform.setup({
 
 		css = { "prettier" },
 
+		html = { "prettier" },
+
 		json = { "prettier" },
 
 		rust = { "rustfmt" },
