@@ -159,7 +159,7 @@ alt - d : scratchpad --toggle discord
 alt - return : scratchpad --toggle alacritty
 
 # open terminal
-ctrl - return : open -n /Applications/Alacritty.app
+ctrl - return : open -n /Applications/WezTerm.app
 
 alt - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 

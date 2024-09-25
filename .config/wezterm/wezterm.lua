@@ -1,9 +1,11 @@
 local wezterm = require 'wezterm';
 
 return {
+    default_prog = { '/opt/homebrew/bin/fish' },
+    window_decorations = "None|RESIZE",
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
     font = wezterm.font("Iosevka Nerd Font"),
-    font_size = 10.5,
+    font_size = 16,
     font_rules = {
         {
             italic = true,
@@ -56,7 +58,7 @@ return {
         top = 6,
         bottom = 6,
     },
-    window_decorations = "NONE",
+    -- window_decorations = "NONE",
 
     -- Hide the tab bar when there is only one tab
     hide_tab_bar_if_only_one_tab = true,
