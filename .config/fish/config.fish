@@ -13,15 +13,12 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /opt/flutter/bin ~/.pub-cache/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin $fish_user_paths /opt/homebrew/bin 
 set -gx SUDO_EDITOR nvim
 set -gx GOPATH ~/go
 
-set --universal tide_right_prompt_items "python"
+# set --universal tide_right_prompt_items "python"
 
-
-# ------------ LIS ------------
-# ------------ LIS ------------
 
 # Alias
 alias gcc="/usr/bin/gcc"
@@ -50,6 +47,7 @@ alias space="dust -d 2"
 alias tma="tmux attach -t"
 alias python="python3"
 alias gputop="nvtop"
+alias fz="cd \$(fd --type directory | fzf)"
 
 
 # Disable ENV prompt since it is already shown on the right side
