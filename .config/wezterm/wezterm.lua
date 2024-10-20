@@ -56,7 +56,7 @@ return {
         top = 6,
         bottom = 6,
     },
-    window_decorations = "NONE",
+    -- window_decorations = "NONE",
 
     -- Hide the tab bar when there is only one tab
     hide_tab_bar_if_only_one_tab = true,

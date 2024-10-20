@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z $1 ]]; then
-    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf")
+    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf" "hostname" "hosts")
     selected_option=$(printf '%s\n' "${options[@]}" | fzf)
     if [[ -z $selected_option ]]; then
         exit 0
@@ -57,6 +57,12 @@ case $selected_option in
         ;;
     "conf")
         command nvim ~/.local/scripts/conf
+        ;;
+    "hostname")
+        command sudoedit /etc/hostname
+        ;;
+    "hosts")
+        command sudoedit /etc/hosts
         ;;
     "wmtheme" | "theme")
         pwd=$(pwd)
