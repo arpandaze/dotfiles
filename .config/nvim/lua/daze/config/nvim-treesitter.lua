@@ -29,15 +29,15 @@ require("nvim-treesitter.configs").setup({
         disable = { "python", "yaml" },
     },
 
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        node_incremental = '.',
-        scope_incremental = 'grc',
-        node_decremental = ',',
-      },
-    },
-
+    -- incremental_selection = {
+    --   enable = true,
+    --   keymaps = {
+    --     node_incremental = '.',
+    --     scope_incremental = 'grc',
+    --     node_decremental = ',',
+    --   },
+    -- },
+    --
     textobjects = {
       select = {
         enable = true,
