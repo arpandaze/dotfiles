@@ -1,1 +1,0 @@
-sshfs -o Ciphers=arcfour -o Compression=no -o ServerAliveCountMax=2 -o ServerAliveInterval=15 ubuntu@holiday:/home/ubuntu/Documents/Projects/ ~/Documents/RemoteProjects/

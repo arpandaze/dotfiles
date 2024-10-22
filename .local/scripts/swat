@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if xprop and xkill are installed
+if ! command -v xprop &> /dev/null; then
+    echo "xprop is required but not installed. Please install it and try again."
+    exit 1
+fi
+
+if ! command -v xkill &> /dev/null; then
+    echo "xkill is required but not installed. Please install it and try again."
+    exit 1
+fi
+
+# Prompt the user to click a window
+echo "Click on the window you want to kill."
+
+# Use xprop to get the window ID
+WINDOW_ID=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+
+if [ -z "$WINDOW_ID" ]; then
+    echo "Failed to get the window ID. Exiting."
+    exit 1
+fi
+
+# Kill the window by sending a close request
+xkill -id "$WINDOW_ID"
+
+# Check if the window was successfully killed
+if [ $? -eq 0 ]; then
+    echo "Window successfully killed."
+else
+    echo "Failed to kill the window."
+fi

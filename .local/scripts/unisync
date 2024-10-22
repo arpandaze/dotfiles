@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-unison $HOME/Documents/TestProj ssh://ubuntu@rosemary//home/ubuntu/TestProj
