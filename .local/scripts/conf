@@ -61,6 +61,12 @@ case $selected_option in
     "scratchpad" | "scratch")
         command nvim ~/.config/scratchpad/config.toml
         ;;
+    "hostname")
+        command sudoedit /etc/hostname
+        ;;
+    "hosts")
+        command sudoedit /etc/hosts
+        ;;
     "wmtheme" | "theme")
         pwd=$(pwd)
         cd ~/.config/leftwm && nvim ~/.config/leftwm/themes.toml && cd $pwd

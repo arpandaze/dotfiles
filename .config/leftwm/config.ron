@@ -62,6 +62,7 @@
         (command: Execute, value: "wezterm", modifier: ["modkey", "Control"], key: "Return"),
         (command: Execute, value: "firefox-developer-edition", modifier: ["modkey"], key: "b"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
+        (command: Execute, value: "exec ~/.local/scripts/swat", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"),
         (command: Execute, value: "systemctl suspend", modifier: ["modkey", "Control"], key: "BackSpace"),
@@ -109,7 +110,7 @@
         // (command: ToggleNBFullScreen, value: "/home/daze/.local/scripts/toggle_polybar", modifier: ["modkey", "Shift"], key: "space"),
         (command: Execute, value: "maim -s --hidecursor | xclip -selection clipboard -t image/png", modifier: [], key: "Print"),
         (command: ToggleScratchPad, value: "Gpaste", modifier: ["modkey"], key: "v"),
-
+        (command: Execute, value: "/home/daze/.local/scripts/typepaste", modifier: ["Control", "Shift"], key: "p"),
         (command: Execute, value: "~/.local/scripts/ss_ocr", modifier: [], key: "Home"),
         (command: ToggleScratchPad, value: "Wezterm", modifier: ["modkey"], key: "Return"),
         (command: ToggleScratchPad, value: "Obsidian", modifier: ["modkey"], key: "n"),

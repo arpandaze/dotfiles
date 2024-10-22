@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Define variables
+CONTAINER_NAME="global_redis"
+HOST_PORT=6379
+
+# Check if the container already exists
+if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]; then
+  # Container already exists, start it if it's not running
+  if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+    echo "Redis container '$CONTAINER_NAME' is already running and accessible on port $HOST_PORT."
+  else
+    docker start $CONTAINER_NAME > /dev/null
+    echo "Redis container '$CONTAINER_NAME' was already created. Starting it now."
+    echo "Redis container '$CONTAINER_NAME' is running and accessible on port $HOST_PORT."
+  fi
+else
+  # Container does not exist, create and run it
+  docker run -d \
+    --name $CONTAINER_NAME \
+    -p $HOST_PORT:6379 \
+    redis:latest > /dev/null
+
+  # Check if the container was successfully created and started
+  if [ $? -eq 0 ]; then
+    echo "Redis container '$CONTAINER_NAME' is running and accessible on port $HOST_PORT."
+  else
+    echo "Failed to start Redis container."
+  fi
+fi
+

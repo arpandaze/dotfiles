@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Define the paths
+K3S_CONFIG="$HOME/.kube/k3s.yaml"
+DEFAULT_CONFIG="$HOME/.kube/config"
+TOGGLE_CONFIG="$HOME/.kube/config_bak"
+
+# Function to toggle the kubeconfig
+toggle_kubeconfig() {
+    if [ -f "$DEFAULT_CONFIG" ]; then
+        # Rename default config to backup
+        mv "$DEFAULT_CONFIG" "$TOGGLE_CONFIG"
+        # Rename k3s config to default config
+        mv "$K3S_CONFIG" "$DEFAULT_CONFIG"
+        echo "Switched to k3s.yaml config."
+    elif [ -f "$TOGGLE_CONFIG" ]; then
+        # Rename backup config to default config
+        mv "$TOGGLE_CONFIG" "$DEFAULT_CONFIG"
+        # Rename default config to k3s config
+        mv "$DEFAULT_CONFIG" "$K3S_CONFIG"
+        echo "Switched to default config."
+    else
+        echo "Error: No configuration files found to toggle."
+        exit 1
+    fi
+}
+
+# Check for 'toggle' argument
+if [ "$1" == "toggle" ]; then
+    toggle_kubeconfig
+else
+    echo "Usage: $0 toggle"
+    exit 1
+fi

@@ -57,6 +57,12 @@ return {
     },
 
     {
+       "m4xshen/hardtime.nvim",
+       dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+       opts = {}
+    },
+
+    {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
@@ -64,7 +70,9 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require("nvim-tree").setup({})
+            require("nvim-tree").setup({
+                view = { adaptive_size = true },
+            })
         end,
     },
 
@@ -150,7 +158,47 @@ return {
     },
 
     -- Github Copilot
-    "zbirenbaum/copilot.lua",
+    {
+      "yetone/avante.nvim",
+      event = "VeryLazy",
+      lazy = false,
+      opts = {},
+      config = function()
+        require("daze.config.avante")
+      end,
+      build = ":AvanteBuild",
+      dependencies = {
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "zbirenbaum/copilot.lua",
+        {
+          -- support for image pasting
+          "HakonHarnes/img-clip.nvim",
+          event = "VeryLazy",
+          opts = {
+            -- recommended settings
+            default = {
+              embed_image_as_base64 = false,
+              prompt_for_file_name = false,
+              drag_and_drop = {
+                insert_mode = true,
+              },
+              -- required for Windows users
+              use_absolute_path = true,
+            },
+          },
+        },
+        {
+          -- Make sure to setup it properly if you have lazy=true
+          'MeanderingProgrammer/render-markdown.nvim',
+          opts = {
+            file_types = { "markdown", "Avante" },
+          },
+          ft = { "markdown", "Avante" },
+        },
+      },
+    },
 
     -- Commenting
     {
@@ -194,6 +242,16 @@ return {
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
+    },
+
+    -- Widfire
+    {
+        "sustech-data/wildfire.nvim",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("wildfire").setup()
+        end,
     },
 
     -- Visual surround

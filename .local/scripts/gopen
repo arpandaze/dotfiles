@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Check if a directory argument is provided
+if [ $# -eq 1 ]; then
+  target_dir=$1
+else
+  target_dir=$(pwd)
+fi
+
+# Check if the target directory is inside a git repository
+if git -C "$target_dir" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  # Get the repository's root directory
+  repo_root=$(git -C "$target_dir" rev-parse --show-toplevel)
+
+  # Get the current branch name
+  branch=$(git -C "$target_dir" rev-parse --abbrev-ref HEAD)
+
+  # Get the remote URL
+  remote_url=$(git -C "$target_dir" config --get remote.origin.url)
+
+  # Convert SSH URL to HTTPS URL if needed
+  if [[ $remote_url == git@github.com:* ]]; then
+    repo_url=${remote_url/git@github.com:/https:\/\/github.com\/}
+    repo_url=${repo_url/.git/}
+  else
+    repo_url=${remote_url/.git/}
+  fi
+
+  # Get the relative path from the repo root to the target directory
+  if [[ "$target_dir" == "$repo_root" ]]; then
+    relative_path=""
+  else
+    relative_path=${target_dir#$repo_root/}
+  fi
+
+  # Construct the full GitHub URL
+  if [[ -n "$relative_path" ]]; then
+    github_url="$repo_url/tree/$branch/$relative_path"
+  else
+    github_url="$repo_url/tree/$branch"
+  fi
+
+  # Open the URL in the default web browser
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    xdg-open "$github_url"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    open "$github_url"
+  elif [[ "$OSTYPE" == "cygwin" ]]; then
+    cygstart "$github_url"
+  elif [[ "$OSTYPE" == "msys" ]]; then
+    start "$github_url"
+  elif [[ "$OSTYPE" == "win32" ]]; then
+    start "$github_url"
+  else
+    echo "Unsupported OS type: $OSTYPE"
+    exit 1
+  fi
+
+else
+  echo "Not inside a Git repository"
+fi
+
