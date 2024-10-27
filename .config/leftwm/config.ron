@@ -32,7 +32,7 @@
     layout_mode: Workspace,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Wezterm", value: "wezterm -e /home/daze/.local/scripts/tmc main", x: 260, y: 140, height: 800, width: 1400),
+        (name: "Wezterm", value: "wezterm", args: ["-e", "/home/daze/.local/scripts/tmc", "main"], x: 260, y: 140, height: 800, width: 1400),
         (name: "Obsidian", value: "obsidian", x: 260, y: 140, height: 800, width: 1400),
         (name: "Telegram", value: "telegram-desktop", x: 260, y: 140, height: 800, width: 1400),
         (name: "Routine", value: "feh ~/.config/spadimages/routine.png --zoom 84 max", x: 260, y: 140, height: 800, width: 1400),
@@ -42,9 +42,6 @@
         (name: "YTMusic", value: "youtube-music", x: 260, y: 140, height: 800, width: 1400),
         (name: "FileExplorer", value: "pcmanfm", x: 260, y: 140, height: 800, width: 1400),
         (name: "Gpaste", value: "/usr/lib/gpaste/gpaste-ui", x: 260, y: 140, height: 712, width: 907),
-    ],
-    window_rules: [
-        (window_class: None, window_title: "OpenGL-Practice", spawn_on_tag: 3, spawn_on_workspace: None, spawn_on_workspace_id: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     ],
     disable_current_tag_swap: false,
     disable_tile_drag: false,
@@ -59,7 +56,7 @@
         (command: Execute, value: "killall picom", modifier: ["modkey", "Shift"], key: "p"),
         (command: SetLayout, value: "Monocle", modifier: ["modkey"], key: "m"),
         (command: FloatingToTile, value: "", modifier: ["modkey", "Shift"], key: "t"),
-        (command: Execute, value: "wezterm", modifier: ["modkey", "Control"], key: "Return"),
+        (command: Execute, value: "wezterm", modifier: ["Control"], key: "Return"),
         (command: Execute, value: "firefox-developer-edition", modifier: ["modkey"], key: "b"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: Execute, value: "exec ~/.local/scripts/swat", modifier: ["modkey", "Shift"], key: "q"),

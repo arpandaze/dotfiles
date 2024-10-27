@@ -37,6 +37,9 @@ xmodmap -e "keycode 9 = grave asciitilde"
 xmodmap -e "keycode 64 = keycode 133"
 xmodmap -e "keycode 133 = keycode 64"
 
+# i3lock on lid close
+xss-lock -- i3lock -c 000000 &> /dev/null &
+
 # Hide cursor while typing
 unclutter &> /dev/null &
 
@@ -53,8 +56,3 @@ do
   monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
   let index=index+1
 done
-
-nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
-nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
-
-cd /home/daze/Desktop/actions-runner && ./run.sh &> /dev/null &
