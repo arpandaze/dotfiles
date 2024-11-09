@@ -41,6 +41,8 @@ unclutter &> /dev/null &
 #Clipboard manager
 gpaste-client start
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &> /dev/null &
+
 xset s off -dpms
 
 index=0
