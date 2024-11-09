@@ -1,10 +1,10 @@
 local conform = require("conform")
 
 conform.setup({
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_fallback = true,
-    },
+	format_after_save = {
+		timeout_ms = 1000,
+		lsp_fallback = true,
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 
@@ -26,8 +26,8 @@ conform.setup({
 
 		rust = { "rustfmt" },
 
-        dart = { "dart_format" },
+		dart = { "dart_format" },
 
-        php = { "php-cs-fixer" },
+		php = { "php-cs-fixer" },
 	},
 })
