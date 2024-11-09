@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+if [[ -z $1 ]]; then
+    options=("Default" "Office" "Home" "HomeTriple")
+    selected_option=$(printf '%s\n' "${options[@]}" | fzf --prompt="Select monitor configuration: ")
+    if [[ -z $selected_option ]]; then
+        exit 0
+    fi
+else
+    selected_option=$1
+fi
+
+case $selected_option in
+    "Default")
+        xrandr --output eDP --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-A-0 --off --output DisplayPort-0 --off --output DisplayPort-1 --off
+        ;;
+    "Office")
+        xrandr --output HDMI-1 --primary --mode 2560x1440 --pos 0x0 -r 143.91 --rotate normal --output eDP-1 --mode 1920x1200 --pos 2560x0 -r 60.00 --rotate normal
+        ;;
+    "Home")
+        xrandr --output eDP --off --output HDMI-A-0 --mode 1920x1080 --primary --rate 60 --pos 0x0 --rotate normal --output DisplayPort-0 --mode 1920x1080 --rate 120 --pos 1920x0 --rotate normal
+        ;;
+    "HomeTriple")
+        xrandr --output eDP --mode 1920x1200 --pos 0x0 --rotate normal --output HDMI-A-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-0 --mode 1920x1080 --pos 3840x0 --rotate normal --output DisplayPort-1 --off
+        ;;
+    *)
+        echo "Invalid option: $selected_option"
+        exit 1
+        ;;
+esac
+
+leftwm-command SoftReload
