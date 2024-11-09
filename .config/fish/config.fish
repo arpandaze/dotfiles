@@ -14,11 +14,12 @@ end
 
 # Paths
 set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin $fish_user_paths /opt/homebrew/bin 
+
 set -gx SUDO_EDITOR nvim
+set -gx EDITOR nvim
+
+set --universal nvm_default_version lts
 set -gx GOPATH ~/go
-
-# set --universal tide_right_prompt_items "python"
-
 
 # Alias
 alias gcc="/usr/bin/gcc"
@@ -39,7 +40,7 @@ alias gch="git checkout"
 alias ls="exa"
 alias la="exa -la"
 alias sync='osync.sh ~/.config/osync/sync.conf'
-# alias yay="paru --color always"
+alias yay="paru --color always --bottomup"
 alias du="du -h"
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
 alias rm="trash"

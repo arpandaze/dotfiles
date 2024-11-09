@@ -3,9 +3,6 @@
 # .xinitrc
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-# xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal
-xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 -r 60.00 --rotate normal --output DP-0 --mode 1920x1080 --pos 1920x0 -r 144.00 --rotate normal
-
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -28,7 +25,7 @@ xset fp+ /usr/local/lib/X11/fonts/terminus
 xset fp+ /usr/local/lib/X11/fonts/ghostscript
 xset fp+ /usr/X11R6/lib/X11/fonts/TTF/
 
-# xset fp rehash
+xrdb /home/daze/.Xresources
 
 dbus-update-activation-environment --all
 eval $(gnome-keyring-daemon --start --components=secrets)

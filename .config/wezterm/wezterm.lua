@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm';
 
 return {
+    default_prog = { '/usr/bin/fish' },
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
     font = wezterm.font("Iosevka Nerd Font"),
     font_size = 10.5,

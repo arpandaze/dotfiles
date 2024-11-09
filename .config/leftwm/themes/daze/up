@@ -30,18 +30,18 @@ fi
 xset b 100 0 0
 xset r rate 400 35
 
-# xmodmap -e "add Control = Control_L"
-setxkbmap -option caps:escape
-setxkbmap -option altwin:swap_lalt_lwin
-xmodmap -e "keycode 9 = grave asciitilde"
-xmodmap -e "keycode 64 = keycode 133"
-xmodmap -e "keycode 133 = keycode 64"
+xmodmap ~/.Xmodmap
+
+# i3lock on lid close
+xss-lock -- i3lock -c 000000 &> /dev/null &
 
 # Hide cursor while typing
 unclutter &> /dev/null &
 
 #Clipboard manager
 gpaste-client start
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &> /dev/null &
 
 xset s off -dpms
 
@@ -53,8 +53,3 @@ do
   monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
   let index=index+1
 done
-
-nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
-nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1 > /dev/null
-
-cd /home/daze/Desktop/actions-runner && ./run.sh &> /dev/null &
