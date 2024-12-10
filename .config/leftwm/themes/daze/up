@@ -28,7 +28,7 @@ if [ -x "$(command -v feh)" ]; then
 fi
 
 xset b 100 0 0
-xset r rate 400 35
+xset r rate 400 40
 
 xmodmap ~/.Xmodmap
 
@@ -44,6 +44,8 @@ gpaste-client start
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &> /dev/null &
 
 xset s off -dpms
+
+/usr/bin/udiskie &> /dev/null &
 
 index=0
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
