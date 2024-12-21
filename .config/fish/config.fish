@@ -24,7 +24,6 @@ set -gx GOPATH ~/go
 # Alias
 alias gcc="/usr/bin/gcc"
 alias g++="/usr/bin/g++"
-alias k="kubectl"
 alias py="python3"
 alias vim="nvim"
 alias vi="nvim"
@@ -50,6 +49,17 @@ alias python="python3"
 alias gputop="nvtop"
 alias fz="cd \$(fd --type directory | fzf)"
 
+function k --wraps=kubectl
+  command kubecolor --force-colors $argv 
+end
+
+function kubectl --wraps=kubectl
+  command kubecolor --force-colors $argv
+end
+
+function watch --description 'modern watch'
+    viddy -d --shell fish $argv[1..-1]
+end
 
 # Disable ENV prompt since it is already shown on the right side
 set VIRTUAL_ENV_DISABLE_PROMPT 1
