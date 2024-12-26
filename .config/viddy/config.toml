@@ -1,0 +1,6 @@
+[general]
+min_interval_ms = 100
+interval_step_ms = 200
+
+[keybindings.All]
+"<=>" = "IncreaseInterval"
