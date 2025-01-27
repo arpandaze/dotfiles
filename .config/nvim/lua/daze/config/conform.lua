@@ -14,6 +14,8 @@ conform.setup({
 		-- Use a sub-list to run only the first available formatter
 		javascript = { "prettier" },
 
+        sql = { "sqlformat" },
+
 		prisma = { "prettier" },
 
 		typescript = { "prettier" },
