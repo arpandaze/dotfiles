@@ -13,7 +13,7 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin ~/.fvm/bin ~/.fluvio/bin $fish_user_paths /opt/homebrew/bin 
 
 set -gx SUDO_EDITOR nvim
 set -gx EDITOR nvim
@@ -38,6 +38,7 @@ alias lg="lazygit"
 alias gch="git checkout"
 alias ls="exa"
 alias la="exa -la"
+alias lad="lazydocker"
 alias sync='osync.sh ~/.config/osync/sync.conf'
 alias yay="paru --color always --bottomup"
 alias du="du -h"
