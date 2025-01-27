@@ -1,0 +1,78 @@
+Nov 11 19:09:52 kuvera systemd[1]: Starting Run charge limit script at startup...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit charge.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit charge.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 3889.[0m
+Nov 11 19:09:52 kuvera charge[21609]: Battery protection limitd (charge level 55-60%)
+Nov 11 19:09:53 kuvera charge[21610]: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+Nov 11 19:09:53 kuvera sudo[21610]: [0;1;31m[0;1;39m[0;1;31mpam_fprintd_grosshack(sudo:auth): conversation failed[0m
+Nov 11 19:09:53 kuvera sudo[21610]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): conversation failed[0m
+Nov 11 19:09:53 kuvera sudo[21610]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): auth could not identify password for [daze][0m
+Nov 11 19:09:53 kuvera sudo[21610]: [0;38;5;245m[0;1;31m[0;38;5;245mpam_systemd_home(sudo:auth): New sd-bus connection (system-bus-pam-systemd-home-21610) opened.[0m
+Nov 11 19:09:53 kuvera sudo[21610]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): conversation failed[0m
+Nov 11 19:09:53 kuvera sudo[21610]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): auth could not identify password for [daze][0m
+Nov 11 19:09:53 kuvera sudo[21610]: pam_faillock(sudo:auth): Consecutive login failures for user daze account temporarily locked
+Nov 11 19:09:55 kuvera charge[21610]: sudo: a password is required
+Nov 11 19:09:55 kuvera systemd[1]: [0;1;39m[0;1;31m[0;1;39mcharge.service: Main process exited, code=exited, status=1/FAILURE[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit process exited[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAn ExecStart= process belonging to unit charge.service has exited.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe process' exit code is 'exited' and its exit status is 1.[0m
+Nov 11 19:09:55 kuvera systemd[1]: [0;1;38:5:185m[0;1;39m[0;1;38:5:185mcharge.service: Failed with result 'exit-code'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit charge.service has entered the 'failed' state with result 'exit-code'.[0m
+Nov 11 19:09:55 kuvera systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Run charge limit script at startup.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit charge.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit charge.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 3889 and the job result is failed.[0m
+Nov 11 19:11:41 kuvera systemd[1]: Starting Run charge limit script at startup...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit charge.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit charge.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 4096.[0m
+Nov 11 19:11:41 kuvera sudo[23390]: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+Nov 11 19:11:41 kuvera sudo[23390]: [0;1;31m[0;1;39m[0;1;31mpam_fprintd_grosshack(sudo:auth): conversation failed[0m
+Nov 11 19:11:41 kuvera sudo[23390]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): conversation failed[0m
+Nov 11 19:11:41 kuvera sudo[23390]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): auth could not identify password for [daze][0m
+Nov 11 19:11:41 kuvera sudo[23390]: [0;38;5;245m[0;1;31m[0;38;5;245mpam_systemd_home(sudo:auth): New sd-bus connection (system-bus-pam-systemd-home-23390) opened.[0m
+Nov 11 19:11:41 kuvera sudo[23390]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): conversation failed[0m
+Nov 11 19:11:41 kuvera sudo[23390]: [0;1;31m[0;1;39m[0;1;31mpam_unix(sudo:auth): auth could not identify password for [daze][0m
+Nov 11 19:11:43 kuvera sudo[23390]: sudo: a password is required
+Nov 11 19:11:43 kuvera systemd[1]: [0;1;39m[0;1;31m[0;1;39mcharge.service: Main process exited, code=exited, status=1/FAILURE[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit process exited[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAn ExecStart= process belonging to unit charge.service has exited.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe process' exit code is 'exited' and its exit status is 1.[0m
+Nov 11 19:11:43 kuvera systemd[1]: [0;1;38:5:185m[0;1;39m[0;1;38:5:185mcharge.service: Failed with result 'exit-code'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit charge.service has entered the 'failed' state with result 'exit-code'.[0m
+Nov 11 19:11:43 kuvera systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Run charge limit script at startup.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit charge.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: https://lists.freedesktop.org/mailman/listinfo/systemd-devel[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit charge.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 4096 and the job result is failed.[0m
