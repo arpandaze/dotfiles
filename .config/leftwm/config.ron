@@ -62,7 +62,7 @@
         (command: SetLayout, value: "Monocle", modifier: ["modkey"], key: "m"),
         (command: FloatingToTile, value: "", modifier: ["modkey", "Shift"], key: "t"),
         (command: Execute, value: "wezterm", modifier: ["Control"], key: "Return"),
-        (command: Execute, value: "firefox-developer-edition", modifier: ["modkey"], key: "b"),
+        (command: Execute, value: "brave", modifier: ["modkey"], key: "b"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: Execute, value: "exec ~/.local/scripts/swat", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
