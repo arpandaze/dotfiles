@@ -38,6 +38,9 @@ xss-lock -- i3lock -c 000000 &> /dev/null &
 # Hide cursor while typing
 unclutter &> /dev/null &
 
+# Anki Reminder
+/home/daze/.local/bin/arem &> /dev/null &
+
 #Clipboard manager
 gpaste-client start
 
