@@ -8,6 +8,7 @@ end
 set fish_greeting
 zoxide init fish | source
 
+
 function fish_user_key_bindings
   fish_vi_key_bindings
 end
@@ -49,6 +50,7 @@ alias tma="tmux attach -t"
 alias python="python3"
 alias gputop="nvtop"
 alias fz="cd \$(fd --type directory | fzf)"
+alias loc="tokei"
 
 function k --wraps=kubectl
   command kubecolor --force-colors $argv 
@@ -82,3 +84,4 @@ end
 
 atuin init fish | source
 pyenv init - | source
+sven export --shell fish | source
