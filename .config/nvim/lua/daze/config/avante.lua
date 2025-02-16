@@ -1,25 +1,25 @@
 require("avante").setup({
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
 
-  -- provider = "claude", -- Recommend using Claude
-  -- auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
-  -- claude = {
-  --   endpoint = "https://api.anthropic.com",
-  --   model = "claude-3-5-sonnet-latest",
-  --   temperature = 0,
-  --   max_tokens = 4096,
-  -- },
-
-  provider = "openai",
-  auto_suggestions_provider = "openai",
-  openai = {
-    endpoint = "https://api.deepseek.com/v1",
-    model = "deepseek-chat",
-    timeout = 30000,
+  provider = "claude", -- Recommend using Claude
+  auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+  claude = {
+    endpoint = "https://api.anthropic.com",
+    model = "claude-3-5-sonnet-latest",
     temperature = 0,
     max_tokens = 4096,
-    api_key_name = "DEEPSEEK_API_KEY",
   },
+
+  -- provider = "openai",
+  -- auto_suggestions_provider = "openai",
+  -- openai = {
+  --   endpoint = "https://api.deepseek.com/v1",
+  --   model = "deepseek-chat",
+  --   timeout = 30000,
+  --   temperature = 0,
+  --   max_tokens = 4096,
+  --   api_key_name = "DEEPSEEK_API_KEY",
+  -- },
 
 
   ---Specify the special dual_boost mode
