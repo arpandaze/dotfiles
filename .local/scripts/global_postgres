@@ -4,7 +4,7 @@
 # Define variables
 CONTAINER_NAME="global_postgres"
 POSTGRES_PASSWORD="postgres"
-POSTGRES_DB="lis"
+POSTGRES_DB="postgres"
 HOST_PORT=5432
 
 
@@ -25,7 +25,7 @@ else
     -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
     -e POSTGRES_DB=$POSTGRES_DB \
     -p $HOST_PORT:5432 \
-    postgres:latest > /dev/null
+    supabase/postgres:15.8.1.035_amd64 > /dev/null
 
 
   # Check if the container was successfully created and started

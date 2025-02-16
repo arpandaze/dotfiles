@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Define variables
+CONTAINER_NAME="openhands-app"
+HOST_PORT=5050
+IMAGE="docker.all-hands.dev/all-hands-ai/openhands:0.24"
+RUNTIME_IMAGE="docker.all-hands.dev/all-hands-ai/runtime:0.24-nikolaik"
+
+# Check if the container already exists
+if [ "$(docker ps -a -q -f name=$CONTAINER_NAME)" ]; then
+    # Container already exists, start it if it's not running
+    if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+        echo "OpenHands container '$CONTAINER_NAME' is already running and accessible on port $HOST_PORT."
+    else
+        docker start $CONTAINER_NAME > /dev/null
+        echo "OpenHands container '$CONTAINER_NAME' was already created. Starting it now."
+        echo "OpenHands container '$CONTAINER_NAME' is running and accessible on port $HOST_PORT."
+    fi
+else
+    # Container does not exist, create and run it
+    docker run -d \
+        --name $CONTAINER_NAME \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=$RUNTIME_IMAGE \
+        -e LOG_ALL_EVENTS=true \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v ~/.openhands-state:/.openhands-state \
+        -p $HOST_PORT:3000 \
+        --add-host host.docker.internal:host-gateway \
+        $IMAGE > /dev/null
+
+    # Check if the container was successfully created and started
+    if [ $? -eq 0 ]; then
+        echo "OpenHands container '$CONTAINER_NAME' is running and accessible on port $HOST_PORT."
+    else
+        echo "Failed to start OpenHands container."
+    fi
+fi

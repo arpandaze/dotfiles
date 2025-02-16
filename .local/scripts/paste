@@ -7,6 +7,6 @@ if [ -z "$1" ]; then
 fi
 
 # Paste the clipboard content to the specified filename with ".png" extension
-xclip -selection clipboard -o > "$1.png"
+xclip -selection clipboard -target image/png -o > "$1.png"
 
 echo "Screenshot saved as $1.png in the current location."

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z $1 ]]; then
-    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf" "hostname" "hosts" "viddy")
+    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf" "hostname" "hosts" "viddy" "atuin")
     selected_option=$(printf '%s\n' "${options[@]}" | fzf)
     if [[ -z $selected_option ]]; then
         exit 0
@@ -66,6 +66,9 @@ case $selected_option in
         ;;
     "viddy")
         command nvim ~/.config/viddy/config.toml
+        ;;
+    "atuin")
+        command nvim ~/.config/atuin/config.toml
         ;;
     "wmtheme" | "theme")
         pwd=$(pwd)
