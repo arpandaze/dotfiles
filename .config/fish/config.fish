@@ -82,6 +82,6 @@ if test -z "$QT_QPA_PLATFORMTHEME"
    set -Ux QT_QPA_PLATFORMTHEME qt5ct
 end
 
-atuin init fish | source
-pyenv init - | source
-sven export --shell fish | source
+atuin init fish | source > /dev/null 2>&1
+pyenv init - | source > /dev/null 2>&1
+sven export --shell fish | source > /dev/null 2>&1
