@@ -247,7 +247,7 @@ return {
 	},
 
     -- Extra text objects functionality
-    { 'echasnovski/mini.ai', version = '*', config = function() require('mini.ai').setup({}) end },
+    -- { 'echasnovski/mini.ai', version = '*', config = function() require('mini.ai').setup({}) end },
 
     -- -- WhichKey
     -- {
