@@ -48,6 +48,7 @@ gpaste-client start
 
 xset s off -dpms
 
+/home/daze/.local/bin/sven unlock &> /dev/null &
 /usr/bin/udiskie &> /dev/null &
 
 index=0
