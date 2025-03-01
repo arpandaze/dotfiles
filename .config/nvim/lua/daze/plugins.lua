@@ -113,6 +113,14 @@ return {
 		end,
 	},
 
+	{
+		"rmagatti/auto-session",
+		lazy = false,
+		config = function()
+			require("daze.config.auto-session")
+		end,
+	},
+
 	-- Github Copilot
 	{
 		"yetone/avante.nvim",
