@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z $1 ]]; then
-    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf" "hostname" "hosts" "viddy" "atuin")
+    options=("zsh" "tmux" "bash" "fish" "wez" "neovim" "installscript" "vifm" "xinitrc" "rofi" "picom" "leftwm" "shkd" "theme" "scripts" "conf" "hostname" "hosts" "viddy" "atuin" "zellij")
     selected_option=$(printf '%s\n' "${options[@]}" | fzf)
     if [[ -z $selected_option ]]; then
         exit 0
@@ -48,6 +48,9 @@ case $selected_option in
         ;;
     "leftwm" | "wm")
         command nvim ~/.config/leftwm/config.ron
+        ;;
+    "zellij" | "zel")
+        cd ~/.config/zellij && nvim ~/.config/zellij/config.kdl
         ;;
     "shkd" | "binds" | "sxhkd" | "skhd")
         command nvim ~/.config/skhd/skhdrc

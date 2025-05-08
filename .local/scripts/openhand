@@ -28,6 +28,7 @@ else
         -e LOG_ALL_EVENTS=true \
         -e SANDBOX_USER_ID=1000 \
         -e WORKSPACE_MOUNT_PATH=$WORKSPACE_BASE \
+        -e SANDBOX_USE_HOST_NETWORK=true \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands-state:/.openhands-state \
         -p $HOST_PORT:3000 \
