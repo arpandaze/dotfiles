@@ -51,6 +51,7 @@ alias python="python3"
 alias gputop="nvtop"
 alias fz="cd \$(fd --type directory | fzf)"
 alias loc="tokei"
+alias cup="begin; cd /home/daze/Documents/Projects/lispy/; uv run main.py; end;"
 
 function k --wraps=kubectl
   command kubecolor --force-colors $argv 
@@ -70,7 +71,7 @@ set -gx DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'
 set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
 set -gx LANG en_US.UTF-8
 set -Ux PYENV_ROOT $HOME/.pyenv
-set -gx JAVA_HOME /opt/android-studio/jbr
+# set -gx JAVA_HOME /opt/android-studio/jbr
 set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on'
 set -gx JAVA_FONTS /usr/share/fonts/TTF
 
@@ -83,5 +84,4 @@ if test -z "$QT_QPA_PLATFORMTHEME"
 end
 
 atuin init fish | source > /dev/null 2>&1
-pyenv init - | source > /dev/null 2>&1
 sven export --shell fish | source > /dev/null 2>&1
