@@ -58,6 +58,9 @@ remap("n", "<C-k>", "<CMD> lua vim.lsp.buf.signature_help()<CR>", opts)
 -- Select all
 remap("n", "<leader>a", "ggVG", { noremap = true, silent = true })
 
+--
+remap("n", "<leader>ll", ":NvimTreeFindFileToggle<CR>", opts)
+
 -- Harpoon Binds
 remap("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 remap("n", "ma", ":lua require('harpoon.mark').add_file()<CR>", opts)

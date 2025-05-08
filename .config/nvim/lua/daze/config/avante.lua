@@ -9,6 +9,9 @@ require("avante").setup({
 		temperature = 0,
 		max_tokens = 4096,
 	},
+	web_search_engine = {
+		provider = "tavily",
+	},
 
 	-- provider = "openai",
 	-- auto_suggestions_provider = "openai",
@@ -39,6 +42,8 @@ require("avante").setup({
 	},
 	behaviour = {
 		auto_suggestions = false, -- Experimental stage
+		enable_claude_text_editor_tool_mode = true,
+		enable_cursor_planning_mode = true, -- enable cursor planning mode!
 		auto_set_highlight_group = true,
 		auto_set_keymaps = true,
 		auto_apply_diff_after_generation = false,

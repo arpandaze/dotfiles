@@ -25,6 +25,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- Auto reload files when changed outside of nvim
+vim.opt.autoread = true
+
 require("lazy").setup("daze.plugins")
 
 require("daze.colorscheme")
