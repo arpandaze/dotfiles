@@ -46,12 +46,11 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		version = "v4.*",
+		dependencies = { "catppuccin/nvim" },
+		after = "catppuccin",
 		config = function()
 			require("bufferline").setup({
-				options = {
-					offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-				},
-				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+				highlights = require("catppuccin.special.bufferline").get_theme(),
 			})
 		end,
 	},
@@ -84,34 +83,50 @@ return {
 	},
 
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v1.x",
-		dependencies = {
-			-- LSP Support
-			{
-				"williamboman/mason.nvim",
-			},
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason-lspconfig.nvim" },
-			-- { "jose-elias-alvarez/null-ls.nvim" },
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "hrsh7th/cmp-cmdline" },
-			{ "zbirenbaum/copilot-cmp" }, -- Snippets
-			{ "L3MON4D3/LuaSnip" }, -- Required
-			{ "rafamadriz/friendly-snippets" }, -- Optional
+	{
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
-			require("daze.config.lsp-zero")
-			require("daze.config.copilot")
+			require("daze.config.mason-lspconfig")
 		end,
 	},
+
+	-- {
+	-- 	"VonHeikemen/lsp-zero.nvim",
+	-- 	branch = "v1.x",
+	-- 	dependencies = {
+	-- 		-- LSP Support
+	-- 		{
+	-- 			"williamboman/mason.nvim",
+	-- 		},
+	-- 		{ "neovim/nvim-lspconfig" },
+	-- 		{ "williamboman/mason-lspconfig.nvim" },
+	--
+	-- 		-- Autocompletion
+	-- 		{ "hrsh7th/nvim-cmp" },
+	-- 		{ "hrsh7th/cmp-nvim-lsp" },
+	-- 		{ "hrsh7th/cmp-buffer" },
+	-- 		{ "hrsh7th/cmp-path" },
+	-- 		{ "saadparwaiz1/cmp_luasnip" },
+	-- 		{ "hrsh7th/cmp-nvim-lua" },
+	-- 		{ "hrsh7th/cmp-cmdline" },
+	-- 		{ "zbirenbaum/copilot-cmp" }, -- Snippets
+	-- 		{ "L3MON4D3/LuaSnip" }, -- Required
+	-- 		{ "rafamadriz/friendly-snippets" }, -- Optional
+	-- 	},
+	-- 	config = function()
+	-- 		require("daze.config.lsp-zero")
+	-- 		require("daze.config.copilot")
+	-- 	end,
+	-- },
 
 	{
 		"rmagatti/auto-session",
@@ -119,52 +134,6 @@ return {
 		config = function()
 			require("daze.config.auto-session")
 		end,
-	},
-
-	-- Github Copilot
-	{
-		"yetone/avante.nvim",
-		lazy = false,
-		version = false, -- set this if you want to always pull the latest change
-		build = "make",
-		-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-		config = function()
-			require("daze.config.avante")
-		end,
-		dependencies = {
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below dependencies are optional,
-			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				-- support for image pasting
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					-- recommended settings
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = {
-							insert_mode = true,
-						},
-						-- required for Windows users
-						use_absolute_path = true,
-					},
-				},
-			},
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-		},
 	},
 
 	-- Commenting
@@ -202,15 +171,18 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-
+		lazy = false,
 		config = function()
 			require("daze.config.nvim-treesitter")
 		end,
-
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
 	},
+
+	-- -- Treesitter textobjects (must load after nvim-treesitter)
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	-- 	after = "nvim-treesitter",
+	-- },
 
 	-- Widfire
 	{
@@ -235,7 +207,11 @@ return {
 	{
 		"ggandor/leap.nvim",
 		config = function()
-			require("leap").add_default_mappings()
+			require("leap").setup({})
+			-- Set up default mappings manually
+			vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward-to)")
+			vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward-to)")
+			vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
 		end,
 	},
 
@@ -280,12 +256,19 @@ return {
 	--   },
 	-- },
 
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+		end,
+	},
+
 	-- Repeat
 	{
 		"tpope/vim-repeat",
-		config = function()
-			require("leap").add_default_mappings()
-		end,
 	},
 
 	{ "ron-rs/ron.vim" },
