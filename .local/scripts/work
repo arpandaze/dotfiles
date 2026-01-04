@@ -1,45 +1,21 @@
 #!/usr/bin/env bash
 
-# Configuration
-PROJECTS_ROOT="$HOME/Documents/Projects"
-STATUS_FILE="/tmp/zellij-session-status.$$"
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/Documents/Projects -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
 
-# Select project directory
-selected=$(find "$PROJECTS_ROOT" -mindepth 1 -maxdepth 1 -type d | fzf --height 40% --reverse)
-[[ -z "$selected" ]] && exit 0
+if [[ -z $selected ]]; then
+    exit 0
+fi
 
-session_name=$(basename "$selected")
+selected_name=$(basename "$selected" | tr . _)
 
-# Function to properly check session status
-check_session() {
-    # This is the most reliable way to check session state
-    zellij attach "$session_name" --help > "$STATUS_FILE" 2>&1
-    grep -q "found dead session" "$STATUS_FILE" && echo "dead"
-    grep -q "Session not found" "$STATUS_FILE" && echo "missing"
-    grep -q "Attaching to session" "$STATUS_FILE" && echo "live"
-}
+tmux has-session -t $selected_name > /dev/null 2>&1 
+if [ $? ]
+then
+  command tmux new-session -d -s $selected_name -c $selected > /dev/null 2>&1
+fi
 
-echo "Managing session: $session_name"
-
-case $(check_session) in
-    "live")
-        echo "Attaching to live session..."
-        zellij attach "$session_name"
-        ;;
-    "dead")
-        echo "Cleaning dead session and creating new..."
-        zellij delete-session "$session_name"
-        cd "$selected" && zellij --session "$session_name"
-        ;;
-    "missing")
-        echo "Creating new session..."
-        cd "$selected" && zellij --session "$session_name"
-        ;;
-    *)
-        echo "Unknown session state - creating fresh..."
-        zellij delete-session "$session_name" 2>/dev/null
-        cd "$selected" && zellij --session "$session_name"
-        ;;
-esac
-
-rm -f "$STATUS_FILE"
+tmux attach -t $selected_name
