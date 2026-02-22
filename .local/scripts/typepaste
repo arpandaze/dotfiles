@@ -6,5 +6,5 @@ content=$(xclip -o -selection clipboard)
 sleep 0.5
 # Type out each character individually using xdotool
 for (( i=0; i<${#content}; i++ )); do
-    xdotool type --delay 50 "${content:$i:1}"
+    xdotool type --delay 0 "${content:$i:1}"
 done
