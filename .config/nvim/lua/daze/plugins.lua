@@ -82,6 +82,10 @@ return {
 		end,
 	},
 
+	-- {
+	-- 	"github/copilot.vim",
+	-- },
+
 	{
 		"mason-org/mason.nvim",
 		opts = {},
@@ -98,6 +102,28 @@ return {
 			require("daze.config.mason-lspconfig")
 		end,
 	},
+
+	-- Completion
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+		},
+		config = function()
+			require("daze.config.cmp")
+		end,
+	},
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
+	{ "saadparwaiz1/cmp_luasnip" },
+	{ "L3MON4D3/LuaSnip" },
+	{ "rafamadriz/friendly-snippets" },
 
 	-- {
 	-- 	"VonHeikemen/lsp-zero.nvim",
@@ -205,12 +231,12 @@ return {
 
 	-- Motion
 	{
-		"ggandor/leap.nvim",
+		"https://codeberg.org/andyg/leap.nvim",
 		config = function()
 			require("leap").setup({})
 			-- Set up default mappings manually
-			vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward-to)")
-			vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward-to)")
+			vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+			vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
 			vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
 		end,
 	},
