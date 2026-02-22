@@ -18,12 +18,56 @@ if git -C "$target_dir" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   # Get the remote URL
   remote_url=$(git -C "$target_dir" config --get remote.origin.url)
 
-  # Convert SSH URL to HTTPS URL if needed
+  # Convert SSH URL to HTTPS URL if needed and determine platform
   if [[ $remote_url == git@github.com:* ]]; then
+    # GitHub SSH URL
     repo_url=${remote_url/git@github.com:/https:\/\/github.com\/}
     repo_url=${repo_url/.git/}
+    platform="github"
+  elif [[ $remote_url == git@gitlab.com:* ]]; then
+    # GitLab SSH URL
+    repo_url=${remote_url/git@gitlab.com:/https:\/\/gitlab.com\/}
+    repo_url=${repo_url/.git/}
+    platform="gitlab"
+  elif [[ $remote_url == https://github.com/* ]]; then
+    # GitHub HTTPS URL
+    repo_url=${remote_url/.git/}
+    platform="github"
+  elif [[ $remote_url == https://gitlab.com/* ]]; then
+    # GitLab HTTPS URL
+    repo_url=${remote_url/.git/}
+    platform="gitlab"
+  elif [[ $remote_url == git@* ]]; then
+    # Generic GitLab instance (self-hosted) SSH URL
+    # Extract domain and path from git@domain:path format
+    if [[ $remote_url =~ git@([^:]+):(.+)\.git$ ]]; then
+      domain=${BASH_REMATCH[1]}
+      path=${BASH_REMATCH[2]}
+      repo_url="https://$domain/$path"
+      platform="gitlab"
+    elif [[ $remote_url =~ git@([^:]+):(.+) ]]; then
+      domain=${BASH_REMATCH[1]}
+      path=${BASH_REMATCH[2]}
+      repo_url="https://$domain/$path"
+      platform="gitlab"
+    else
+      repo_url=${remote_url/.git/}
+      platform="unknown"
+    fi
+  elif [[ $remote_url == https://* ]]; then
+    # Generic HTTPS URL
+    repo_url=${remote_url/.git/}
+    # Try to detect if it's GitLab by checking common patterns
+    if [[ $remote_url =~ https://.*gitlab.* ]] || [[ $remote_url =~ /gitlab/ ]]; then
+      platform="gitlab"
+    elif [[ $remote_url =~ https://.*github.* ]] || [[ $remote_url =~ /github/ ]]; then
+      platform="github"
+    else
+      platform="unknown"
+    fi
   else
     repo_url=${remote_url/.git/}
+    platform="unknown"
   fi
 
   # Get the relative path from the repo root to the target directory
@@ -33,30 +77,46 @@ if git -C "$target_dir" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     relative_path=${target_dir#$repo_root/}
   fi
 
-  # Construct the full GitHub URL
-  if [[ -n "$relative_path" ]]; then
-    github_url="$repo_url/tree/$branch/$relative_path"
+  # Construct the full URL based on platform
+  if [[ "$platform" == "github" ]]; then
+    if [[ -n "$relative_path" ]]; then
+      web_url="$repo_url/tree/$branch/$relative_path"
+    else
+      web_url="$repo_url/tree/$branch"
+    fi
+  elif [[ "$platform" == "gitlab" ]]; then
+    if [[ -n "$relative_path" ]]; then
+      web_url="$repo_url/-/tree/$branch/$relative_path"
+    else
+      web_url="$repo_url/-/tree/$branch"
+    fi
   else
-    github_url="$repo_url/tree/$branch"
+    # For unknown platforms, try GitHub pattern as default
+    if [[ -n "$relative_path" ]]; then
+      web_url="$repo_url/tree/$branch/$relative_path"
+    else
+      web_url="$repo_url/tree/$branch"
+    fi
+    echo "Warning: Unknown Git platform. Using default URL pattern."
   fi
 
   # Open the URL in the default web browser
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    xdg-open "$github_url"
+    xdg-open "$web_url"
   elif [[ "$OSTYPE" == "darwin"* ]]; then
-    open "$github_url"
+    open "$web_url"
   elif [[ "$OSTYPE" == "cygwin" ]]; then
-    cygstart "$github_url"
+    cygstart "$web_url"
   elif [[ "$OSTYPE" == "msys" ]]; then
-    start "$github_url"
+    start "$web_url"
   elif [[ "$OSTYPE" == "win32" ]]; then
-    start "$github_url"
+    start "$web_url"
   else
     echo "Unsupported OS type: $OSTYPE"
+    echo "URL: $web_url"
     exit 1
   fi
 
 else
   echo "Not inside a Git repository"
 fi
-
