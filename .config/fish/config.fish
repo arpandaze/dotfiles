@@ -40,7 +40,7 @@ alias gch="git checkout"
 alias ls="exa"
 alias la="exa -la"
 alias lad="lazydocker"
-alias sync='osync.sh ~/.config/osync/sync.conf'
+# alias sync='osync.sh ~/.config/osync/sync.conf'
 alias yay="paru --color always --bottomup"
 alias du="du -h"
 alias tmux="TERM=screen-256color-bce /usr/bin/tmux"
