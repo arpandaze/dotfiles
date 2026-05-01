@@ -14,7 +14,7 @@ function fish_user_key_bindings
 end
 
 # Paths
-set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin ~/.fvm/bin ~/.fluvio/bin $fish_user_paths /opt/homebrew/bin 
+set -gx fish_user_paths ~/.local/scripts /opt/google-cloud-cli/bin ~/.local/bin ~/go/bin ~/.bun/bin ~/.cargo/bin /home/daze/.local/opt/flutter/bin ~/.pub-cache/bin ~/.fvm/bin ~/.fluvio/bin $fish_user_paths /opt/homebrew/bin 
 
 set -gx SUDO_EDITOR nvim
 set -gx EDITOR nvim
@@ -52,6 +52,7 @@ alias gputop="nvtop"
 alias fz="cd \$(fd --type directory | fzf)"
 alias loc="tokei"
 alias cup="begin; cd /home/daze/Documents/Projects/lispy/; uv run main.py; end;"
+alias npm="bun"
 
 function k --wraps=kubectl
   command kubecolor --force-colors $argv 
