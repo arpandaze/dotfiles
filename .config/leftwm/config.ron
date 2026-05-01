@@ -20,6 +20,7 @@
         "MainAndHorizontalStack",
         "MainAndDeck",
         "GridHorizontal",
+        "Grid",
         "EvenHorizontal",
         "EvenVertical",
         "Fibonacci",
@@ -58,6 +59,7 @@
     default_width: 800,
     default_height: 600,
     keybind: [
+        (command: Execute, value: "exec ~/.local/scripts/quick-actions", modifier: ["modkey"], key: "o"),
         (command: Execute, value: "exec ~/.config/rofi/launchers/misc/launcher.sh", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "exec ~/.local/scripts/mon Default", modifier: ["modkey", "Shift"], key: "f"),
         (command: Execute, value: "killall picom", modifier: ["modkey", "Shift"], key: "p"),
