@@ -55,11 +55,11 @@ return {
 		end,
 	},
 
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {},
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {},
+	-- },
 
 	{
 		"nvim-tree/nvim-tree.lua",
